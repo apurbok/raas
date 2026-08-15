@@ -49,10 +49,16 @@ export const values = [
   },
 ] as const;
 
+export type NavChild = {
+  readonly label: string;
+  readonly href: string;
+  readonly description?: string;
+};
+
 export type NavItem = {
-  label: string;
-  href: string;
-  children?: { label: string; href: string; description?: string }[];
+  readonly label: string;
+  readonly href: string;
+  readonly children?: readonly NavChild[];
 };
 
 export const navigation = {

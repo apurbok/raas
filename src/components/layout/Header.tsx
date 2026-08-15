@@ -135,12 +135,12 @@ export function Header() {
 
         {/* Desktop Menu */}
         <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex" aria-label="Main navigation">
-          {navigation.header.map((item: NavItem) => {
-            const hasChildren = item.children && item.children.length > 0;
+          {navigation.header.map((item: any) => {
+            const hasChildren = item?.children && item.children?.length > 0;
             const isActive =
               pathname === item.href ||
               (item.href !== "/" && pathname.startsWith(item.href)) ||
-              (item.children && item.children.some((c) => pathname.startsWith(c.href.split("#")[0])));
+              (item.children && item.children.some((c: any) => pathname.startsWith(c.href.split("#")[0])));
 
             if (!hasChildren) {
               return (
@@ -189,7 +189,7 @@ export function Header() {
                   <div className="absolute left-0 top-full pt-1.5 w-72 xl:w-80 animate-in fade-in-50 slide-in-from-top-2 duration-200 z-50">
                     <div className="rounded-xl border border-primary/20 bg-[#0092db] p-2 shadow-2xl text-white">
                       <div className="flex flex-col space-y-0.5">
-                        {item.children?.map((subItem) => (
+                        {item.children?.map((subItem: any) => (
                           <Link
                             key={subItem.href}
                             href={subItem.href}

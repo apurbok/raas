@@ -13,6 +13,8 @@ import {
   Users,
 } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import { hsePolicy } from "@/content/policies";
 
@@ -42,7 +44,24 @@ export default function HSEPage() {
       {/* Safety Track Record Stats */}
       <Section className="py-12 bg-primary-dark text-white border-b border-white/10">
         <Container>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 text-center">
+          <div className="relative mb-8 overflow-hidden rounded-2xl border border-white/20 shadow-lg">
+            <div className="relative aspect-[21/9]">
+              <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=685&fit=crop&q=80"
+                alt="Construction site safety"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Safety Stats */}
+      <Section className="py-12 bg-primary-dark text-white border-b border-white/10">
+        <Container>
+          <StaggerContainer className="grid grid-cols-2 gap-6 sm:grid-cols-4 text-center" staggerMs={100}>
             {hsePolicy.stats.map((stat) => (
               <div key={stat.label} className="p-2">
                 <div className="text-3xl sm:text-4xl font-extrabold text-accent font-heading">
@@ -54,7 +73,7 @@ export default function HSEPage() {
                 <div className="text-[11px] text-white/70 mt-0.5">{stat.note}</div>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </Section>
 
@@ -66,16 +85,22 @@ export default function HSEPage() {
               <ShieldCheck className="h-4 w-4" />
               Corporate HES Charter
             </div>
-            <h2 className="text-3xl font-extrabold text-primary md:text-4xl font-heading mb-6">
-              Our Safety Philosophy &amp; Environmental Stewardship
-            </h2>
-            <p className="text-base sm:text-lg text-text-muted leading-relaxed mb-6 font-medium">
-              {hsePolicy.overview}
-            </p>
+            <WordReveal
+              text="Our Safety Philosophy & Environmental Stewardship"
+              as="h2"
+              className="text-3xl font-extrabold text-primary md:text-4xl font-heading mb-10"
+              staggerMs={50}
+              duration={600}
+            />
+            <ScrollReveal variant="fade-up" delay={300}>
+              <p className="text-base sm:text-lg text-text-muted leading-relaxed mb-6 font-medium">
+                {hsePolicy.overview}
+              </p>
+            </ScrollReveal>
           </div>
 
           {/* 6 Core Policy Commitments from PDF */}
-          <div className="mx-auto max-w-4xl space-y-8 mt-12">
+          <StaggerContainer className="mx-auto max-w-4xl space-y-8 mt-12" staggerMs={100}>
             {hsePolicy.commitments.map((commitment, index) => {
               const Icon = pillarIcons[index] || ShieldCheck;
               return (
@@ -122,7 +147,7 @@ export default function HSEPage() {
                 </div>
               );
             })}
-          </div>
+          </StaggerContainer>
 
           {/* Compliance Framework Card */}
           <div className="mx-auto max-w-4xl mt-12 rounded-2xl bg-surface border border-border p-8 flex flex-col sm:flex-row items-center justify-between gap-6">

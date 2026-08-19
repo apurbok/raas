@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CharReveal, GradientText, Typewriter, WordReveal } from "@/components/ui/AnimatedText";
 
 export type Slide = {
   id: number;
@@ -12,7 +13,7 @@ export type Slide = {
   tagline: string;
   buttonText: string;
   buttonHref: string;
-  bgGradient: string;
+  bgImage: string;
   badge: string;
 };
 
@@ -25,7 +26,7 @@ const slides: Slide[] = [
       "Premier engineering & construction excellence delivering landmark thermal power plant townships, industrial complexes, and critical infrastructure across Bangladesh.",
     buttonText: "More Details",
     buttonHref: "/projects/payra-1320mw/",
-    bgGradient: "from-[#0d1f33]/90 via-[#153252]/80 to-[#1b3a5c]/85",
+    bgImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop&q=80",
     badge: "Landmark Mega-Projects",
   },
   {
@@ -36,7 +37,7 @@ const slides: Slide[] = [
       "Aligning with Bangladesh Delta Plan 2100 with heavy capital dredging, hydraulic land reclamation, riverbank revetment, and sub-river crossing support.",
     buttonText: "More Details",
     buttonHref: "/dredging/",
-    bgGradient: "from-[#0a233a]/90 via-[#0d3b66]/80 to-[#104e8b]/85",
+    bgImage: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1920&h=1080&fit=crop&q=80",
     badge: "Marine & Delta Plan 2100",
   },
   {
@@ -47,7 +48,7 @@ const slides: Slide[] = [
       "Pioneering clean energy transition through turnkey civil engineering, deep soil compaction, dormitory campuses, and solar farm foundation developments.",
     buttonText: "More Details",
     buttonHref: "/projects/pabna-solar-64mw/",
-    bgGradient: "from-[#112d22]/90 via-[#1b4332]/80 to-[#2d6a4f]/85",
+    bgImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&h=1080&fit=crop&q=80",
     badge: "Clean Energy Infrastructure",
   },
   {
@@ -58,8 +59,19 @@ const slides: Slide[] = [
       "Empowered with in-house automated concrete batching plants, transit mixers, mobile power generators, and precision digital surveying instruments.",
     buttonText: "More Details",
     buttonHref: "/equipment/",
-    bgGradient: "from-[#2b1810]/90 via-[#402416]/80 to-[#5c301b]/85",
+    bgImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&h=1080&fit=crop&q=80",
     badge: "Complete Fleet Superiority",
+  },
+  {
+    id: 5,
+    title: "Oil & Gas Infrastructure",
+    tagline: "International Energy & Industrial Solutions Platform",
+    subtitle:
+      "Delivering world-class energy infrastructure, oil & gas facilities, and green energy transition projects across Bangladesh, the Middle East, China, and global markets.",
+    buttonText: "More Details",
+    buttonHref: "/oil-gas/",
+    bgImage: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop&q=80",
+    badge: "Energy & Infrastructure",
   },
 ];
 
@@ -104,7 +116,7 @@ export function HeroSlider() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background Graphic Slides */}
+      {/* Background Image Slides */}
       {slides.map((slide, index) => {
         const isActive = index === current;
         return (
@@ -115,19 +127,17 @@ export function HeroSlider() {
               isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none",
             )}
           >
-            {/* Rich Architectural Grid & Gradient Visual Background */}
-            <div className={cn("absolute inset-0 bg-gradient-to-r", slide.bgGradient)} />
-            
-            {/* SVG Engineering Grid Pattern */}
-            <div
-              className="absolute inset-0 opacity-15"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
+            {/* Real Background Image */}
+            <img
+              src={slide.bgImage}
+              alt={slide.title}
+              className="absolute inset-0 h-full w-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
             />
-
-            {/* Subtle Heavy Crane & Power Plant Silhouettes for ss-4 theme */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-black/60 pointer-events-none" />
+            
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
           </div>
         );
       })}
@@ -135,35 +145,43 @@ export function HeroSlider() {
       {/* Center Frosted Glass Content Panel (Exact reference to ss-4 & mazadagroup.com) */}
       <div className="relative z-20 container-wide flex items-center justify-center px-4 sm:px-6 py-12 md:py-20">
         <div className="w-full max-w-4xl rounded-2xl md:rounded-3xl border border-white/20 bg-black/45 md:bg-black/50 p-6 sm:p-10 md:p-14 text-center text-white backdrop-blur-md shadow-2xl transition-all duration-500">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/40 px-3 py-1 text-xs font-bold text-accent uppercase tracking-widest mb-4">
-            {slides[current].badge}
-          </div>
+          {/* Key wrapper re-triggers animations on slide change */}
+          <div key={current} className="">
+            <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/40 px-3 py-1 text-xs font-bold text-accent uppercase tracking-widest mb-4 animate-fade-up" style={{ animationDelay: "0ms", animationDuration: "600ms" }}>
+              {slides[current].badge}
+            </div>
 
-          <h1 className="mb-2 text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight font-heading">
-            {slides[current].title}
-          </h1>
+            <WordReveal
+              text={slides[current].title}
+              as="h1"
+              className="mb-2 text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight font-heading"
+              staggerMs={80}
+              duration={600}
+              delay={100}
+            />
 
-          <p className="text-sm sm:text-base md:text-lg font-medium text-accent mb-4">
-            {slides[current].tagline}
-          </p>
+            <p className="text-sm sm:text-base md:text-lg font-medium text-accent mb-4 animate-fade-up" style={{ animationDelay: "500ms", animationDuration: "700ms" }}>
+              {slides[current].tagline}
+            </p>
 
-          <p className="mx-auto max-w-2xl text-xs sm:text-sm md:text-base text-white/85 leading-relaxed mb-8">
-            {slides[current].subtitle}
-          </p>
+            <p className="mx-auto max-w-2xl text-xs sm:text-sm md:text-base text-white/85 leading-relaxed mb-8 animate-fade-up" style={{ animationDelay: "700ms", animationDuration: "800ms" }}>
+              {slides[current].subtitle}
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={slides[current].buttonHref}
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-transparent px-8 py-3 text-sm md:text-base font-bold text-white transition-all duration-200 hover:bg-white hover:text-primary hover:shadow-lg active:scale-95"
-            >
-              {slides[current].buttonText}
-            </Link>
-            <Link
-              href="/contact/"
-              className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3 text-sm md:text-base font-bold text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg active:scale-95"
-            >
-              Get in Touch
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "900ms", animationDuration: "800ms" }}>
+              <Link
+                href={slides[current].buttonHref}
+                className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-transparent px-8 py-3 text-sm md:text-base font-bold text-white transition-all duration-200 hover:bg-white hover:text-primary hover:shadow-lg active:scale-95"
+              >
+                {slides[current].buttonText}
+              </Link>
+              <Link
+                href="/contact/"
+                className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3 text-sm md:text-base font-bold text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg active:scale-95"
+              >
+                Get in Touch
+              </Link>
+            </div>
           </div>
         </div>
       </div>

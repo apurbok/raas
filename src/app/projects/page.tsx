@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { StaggerContainer } from "@/components/ui/ScrollReveal";
 import { projects, type ProjectStatus } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
@@ -54,11 +55,11 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
             {filtered.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
-          </div>
+          </StaggerContainer>
 
           {filtered.length === 0 && (
             <p className="py-12 text-center text-text-muted">No projects match this filter.</p>

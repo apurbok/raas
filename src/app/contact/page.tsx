@@ -2,6 +2,8 @@
 
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 
 export default function ContactPage() {
@@ -19,7 +21,13 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="mb-6 text-2xl font-bold text-primary">Send Us a Message</h2>
+              <WordReveal
+                text="Send Us a Message"
+                as="h2"
+                className="mb-10 text-2xl font-bold text-primary"
+                staggerMs={50}
+                duration={600}
+              />
               <form
                 action="https://api.web3forms.com/submit"
                 method="POST"
@@ -107,7 +115,13 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="mb-6 text-2xl font-bold text-primary">Office Information</h2>
+              <WordReveal
+                text="Office Information"
+                as="h2"
+                className="mb-10 text-2xl font-bold text-primary"
+                staggerMs={50}
+                duration={600}
+              />
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">

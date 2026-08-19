@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FileText, Shield, Mail, Scale } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { StaggerContainer } from "@/components/ui/ScrollReveal";
 import { company } from "@/content/company";
 import { termsOfUse } from "@/content/policies";
 
@@ -40,7 +41,7 @@ export default function TermsOfUsePage() {
             </div>
 
             {/* Terms Sections */}
-            <div className="space-y-6">
+            <StaggerContainer className="space-y-6" staggerMs={80}>
               {termsOfUse.sections.map((section) => (
                 <article
                   key={section.title}
@@ -54,7 +55,7 @@ export default function TermsOfUsePage() {
                   </p>
                 </article>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Legal Support Box */}
             <div className="mt-12 rounded-2xl bg-primary-dark p-8 text-white">

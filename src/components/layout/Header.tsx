@@ -148,11 +148,12 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
+                    "group relative rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
                     isActive ? "text-accent bg-accent/5 font-bold" : "text-primary/90",
                   )}
                 >
                   {item.label}
+                  <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </Link>
               );
             }
@@ -169,7 +170,7 @@ export function Header() {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
+                    "group relative flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
                     isActive || isOpen ? "text-accent bg-accent/5 font-bold" : "text-primary/90",
                   )}
                   aria-expanded={isOpen}
@@ -182,6 +183,7 @@ export function Header() {
                       isOpen && "rotate-180 text-accent",
                     )}
                   />
+                  <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </button>
 
                 {/* Dropdown Panel matching ss-1 style */}

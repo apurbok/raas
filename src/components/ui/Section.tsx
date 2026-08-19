@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { WordReveal } from "./AnimatedText";
 
 type SectionProps = {
   children: React.ReactNode;
@@ -42,18 +45,32 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            "mb-2 text-sm font-semibold uppercase tracking-wider",
+            "mb-2 text-sm font-semibold uppercase tracking-wider animate-fade-up",
             light ? "text-accent" : "text-accent",
           )}
+          style={{ animationDelay: "0ms", animationDuration: "600ms" }}
         >
           {eyebrow}
         </p>
       )}
-      <h2 className={cn("mb-4 text-3xl font-bold md:text-4xl", light ? "text-white" : "text-primary")}>
-        {title}
-      </h2>
+      <WordReveal
+        text={title}
+        as="h2"
+        className={cn(
+          "mb-8 text-3xl font-bold md:text-4xl",
+          light ? "text-white" : "text-primary",
+        )}
+        staggerMs={60}
+        duration={600}
+      />
       {description && (
-        <p className={cn("text-lg leading-relaxed", light ? "text-white/80" : "text-text-muted")}>
+        <p
+          className={cn(
+            "text-lg leading-relaxed animate-fade-up",
+            light ? "text-white/80" : "text-text-muted",
+          )}
+          style={{ animationDelay: "300ms", animationDuration: "700ms" }}
+        >
           {description}
         </p>
       )}
@@ -89,8 +106,18 @@ export function PageHeader({
             ))}
           </nav>
         )}
-        <h1 className="mb-4 text-4xl font-bold text-primary md:text-5xl">{title}</h1>
-        {description && <p className="max-w-3xl text-lg text-text-muted">{description}</p>}
+        <WordReveal
+          text={title}
+          as="h1"
+          className="mb-8 text-4xl font-bold text-primary md:text-5xl"
+          staggerMs={50}
+          duration={600}
+        />
+        {description && (
+          <p className="max-w-3xl text-lg text-text-muted animate-fade-up" style={{ animationDelay: "300ms", animationDuration: "700ms" }}>
+            {description}
+          </p>
+        )}
       </Container>
     </div>
   );
@@ -112,8 +139,16 @@ export function CTABanner({
       <Container>
         <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <div>
-            <h2 className="mb-2 text-2xl font-bold text-white md:text-3xl">{title}</h2>
-            <p className="text-white/80">{description}</p>
+            <WordReveal
+              text={title}
+              as="h2"
+              className="mb-2 text-2xl font-bold text-white md:text-3xl"
+              staggerMs={50}
+              duration={600}
+            />
+            <p className="text-white/80 animate-fade-up" style={{ animationDelay: "300ms", animationDuration: "700ms" }}>
+              {description}
+            </p>
           </div>
           <Link
             href={href}

@@ -14,9 +14,22 @@ import {
 } from "lucide-react";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import { projects } from "@/content/projects";
 import { getService, services } from "@/content/services";
+
+const serviceHeroImages: Record<string, string> = {
+  "civil-construction": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=530&fit=crop&q=80",
+  "civil-engineering": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&h=530&fit=crop&q=80",
+  "property-development": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=530&fit=crop&q=80",
+  "asset-management": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=530&fit=crop&q=80",
+  "bridging-structural": "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=1600&h=530&fit=crop&q=80",
+  "landscaping": "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1600&h=530&fit=crop&q=80",
+  "road-pavement": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1600&h=530&fit=crop&q=80",
+  "dredging-excavating": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1600&h=530&fit=crop&q=80",
+};
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,6 +73,31 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
       />
 
+      {/* Service Hero Image */}
+      <Section className="py-0">
+        <Container>
+          <div className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
+            <div className="relative aspect-[21/7]">
+              <img
+                src={serviceHeroImages[slug] || "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=530&fit=crop&q=80"}
+                alt={service.title}
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                  {service.title}
+                </h2>
+                <p className="mt-1 text-sm sm:text-base text-white/80">
+                  {service.shortDescription}
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section className="py-16 md:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 items-start">
@@ -81,12 +119,16 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </div>
                 </div>
 
-                <p className="text-base sm:text-lg text-text-muted leading-relaxed mb-6 font-medium">
-                  {service.description}
-                </p>
-                <p className="text-base text-text-muted leading-relaxed">
-                  {service.overview}
-                </p>
+                <ScrollReveal variant="fade-up" delay={200}>
+                  <p className="text-base sm:text-lg text-text-muted leading-relaxed mb-6 font-medium">
+                    {service.description}
+                  </p>
+                </ScrollReveal>
+                <ScrollReveal variant="fade-up" delay={350}>
+                  <p className="text-base text-text-muted leading-relaxed">
+                    {service.overview}
+                  </p>
+                </ScrollReveal>
               </div>
 
               {/* Detailed Sections from PDF */}
@@ -97,7 +139,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     Specialized Expertise &amp; Execution Focus
                   </h3>
 
-                  <div className="space-y-6">
+                  <StaggerContainer className="space-y-6" staggerMs={80}>
                     {service.sections.map((section) => (
                       <div
                         key={section.heading}
@@ -124,7 +166,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                         )}
                       </div>
                     ))}
-                  </div>
+                  </StaggerContainer>
                 </div>
               )}
 
@@ -135,7 +177,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     <Cpu className="h-6 w-6 text-primary" />
                     Our 5-Step Project Execution Methodology
                   </h3>
-                  <div className="space-y-4">
+                  <StaggerContainer className="space-y-4" staggerMs={80}>
                     {service.methodology.map((m) => (
                       <div
                         key={m.step}
@@ -150,7 +192,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                         </div>
                       </div>
                     ))}
-                  </div>
+                  </StaggerContainer>
                 </div>
               )}
 
@@ -159,7 +201,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <h3 className="text-2xl font-bold text-primary font-heading mb-6">
                   Core Technical Capabilities
                 </h3>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <StaggerContainer className="grid gap-3 sm:grid-cols-2" staggerMs={60}>
                   {service.capabilities.map((cap) => (
                     <div
                       key={cap}
@@ -169,7 +211,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                       <span>{cap}</span>
                     </div>
                   ))}
-                </div>
+                </StaggerContainer>
               </div>
 
               {/* Standards & Compliance */}

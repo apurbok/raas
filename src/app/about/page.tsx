@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Award, CheckCircle2, Compass, ShieldCheck, Target, Users } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company, values } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -27,9 +29,14 @@ export default function AboutPage() {
                 <ShieldCheck className="h-4 w-4" />
                 Who We Are
               </div>
-              <h2 className="mb-6 text-3xl font-bold text-primary md:text-4xl">
-                Engineering Excellence Built on Trust &amp; Innovation
-              </h2>
+              <WordReveal
+                text="Engineering Excellence Built on Trust & Innovation"
+                as="h2"
+                className="mb-10 text-3xl font-bold text-primary md:text-4xl"
+                staggerMs={50}
+                duration={600}
+              />
+              <ScrollReveal variant="fade-up" delay={200}>
               <p className="mb-4 text-base text-text-muted leading-relaxed">
                 <strong className="text-primary font-semibold">RASS Associates Ltd</strong> is a premier
                 construction and facilities management company based in Bangladesh, renowned for its
@@ -39,15 +46,19 @@ export default function AboutPage() {
                 reality, managing projects from initial conceptualization through to completion, and
                 maintaining the highest standards of quality and service throughout the project lifecycle.
               </p>
+              </ScrollReveal>
+              <ScrollReveal variant="fade-up" delay={350}>
               <p className="mb-6 text-base text-text-muted leading-relaxed">
                 We pride ourselves on being a versatile player in the construction sector, with a
                 diverse portfolio that spans a wide array of industries. Our expertise covers
                 residential, commercial, industrial, and infrastructure projects, making us a go-to
                 partner for clients seeking reliable, innovative, and cost-effective solutions. Whether
-                it&apos;s a multi-story office building, a luxury residential complex, a power plant, or
+                {"it's"} a multi-story office building, a luxury residential complex, a power plant, or
                 public infrastructure like roads and bridges, RASS Associates Ltd has consistently
                 delivered projects that exceed expectations.
               </p>
+              </ScrollReveal>
+              <ScrollReveal variant="fade-up" delay={500}>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/leadership/"
@@ -64,34 +75,48 @@ export default function AboutPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+              </ScrollReveal>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm">
-                <h3 className="mb-4 text-xl font-bold text-primary flex items-center gap-2">
-                  <Award className="h-5 w-5 text-accent" />
-                  Our Commitment
-                </h3>
-                <p className="mb-6 text-sm text-text-muted leading-relaxed">
-                  We are committed to delivering projects on time, within budget, and with the highest
-                  quality standards. Our vision is to be the preferred partner for clients, setting
-                  benchmarks for others to follow.
-                </p>
-                <div className="space-y-3">
-                  {[
-                    "Over 25+ years of combined engineering and leadership mastery",
-                    "Proven execution on mega-scale thermal and solar power plants",
-                    "Full in-house machinery, concrete batching, and marine dredging fleet",
-                    "Rigorous Health, Environment & Safety (HES) zero-accident protocols",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-text">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+            <ScrollReveal variant="slide-right" delay={200} className="lg:col-span-5">
+              <div className="space-y-6">
+                <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
+                  <div className="relative aspect-[16/10]">
+                    <img
+                      src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=500&fit=crop&q=80"
+                      alt="RASS Associates construction site"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm">
+                  <h3 className="mb-4 text-xl font-bold text-primary flex items-center gap-2">
+                    <Award className="h-5 w-5 text-accent" />
+                    Our Commitment
+                  </h3>
+                  <p className="mb-6 text-sm text-text-muted leading-relaxed">
+                    We are committed to delivering projects on time, within budget, and with the highest
+                    quality standards. Our vision is to be the preferred partner for clients, setting
+                    benchmarks for others to follow.
+                  </p>
+                  <div className="space-y-3">
+                    {[
+                      "Over 25+ years of combined engineering and leadership mastery",
+                      "Proven execution on mega-scale thermal and solar power plants",
+                      "Full in-house machinery, concrete batching, and marine dredging fleet",
+                      "Rigorous Health, Environment & Safety (HES) zero-accident protocols",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-text">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </Container>
       </section>
@@ -99,12 +124,22 @@ export default function AboutPage() {
       {/* Mission & Vision Section */}
       <section className="bg-surface py-16 md:py-24 border-y border-border">
         <Container>
-          <div className="grid gap-10 md:grid-cols-2">
+          <StaggerContainer className="grid gap-10 md:grid-cols-2" staggerMs={150}>
             {/* Our Mission */}
             <div
               id="mission"
               className="scroll-mt-28 rounded-2xl bg-white p-8 md:p-10 shadow-sm border border-border flex flex-col justify-between"
             >
+              <div className="overflow-hidden rounded-xl mb-6">
+                <div className="relative aspect-[16/9]">
+                  <img
+                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=450&fit=crop&q=80"
+                    alt="Engineering and construction mission"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
               <div>
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Target className="h-6 w-6 text-primary" />
@@ -134,6 +169,16 @@ export default function AboutPage() {
               id="vision"
               className="scroll-mt-28 rounded-2xl bg-white p-8 md:p-10 shadow-sm border border-border flex flex-col justify-between"
             >
+              <div className="overflow-hidden rounded-xl mb-6">
+                <div className="relative aspect-[16/9]">
+                  <img
+                    src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&q=80"
+                    alt="Renewable energy and sustainable vision"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
               <div>
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                   <Compass className="h-6 w-6 text-accent" />
@@ -154,7 +199,7 @@ export default function AboutPage() {
                 Market Leadership &bull; Sustainable Future
               </div>
             </div>
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
@@ -165,14 +210,22 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider mb-3">
               Guiding Principles
             </div>
-            <h2 className="text-3xl font-bold text-primary md:text-4xl">Our Core Values</h2>
-            <p className="mt-3 text-base text-text-muted">
-              The foundational pillars that guide every decision, design, and construction milestone
-              we undertake.
-            </p>
+            <WordReveal
+              text="Our Core Values"
+              as="h2"
+              className="mb-6 text-3xl font-bold text-primary md:text-4xl"
+              staggerMs={50}
+              duration={600}
+            />
+            <ScrollReveal variant="fade-up" delay={300}>
+              <p className="mt-3 text-base text-text-muted">
+                The foundational pillars that guide every decision, design, and construction milestone
+                we undertake.
+              </p>
+            </ScrollReveal>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
             {values.map((value, i) => (
               <div
                 key={value.title}
@@ -190,7 +243,7 @@ export default function AboutPage() {
                 <p className="text-sm text-text-muted leading-relaxed">{value.description}</p>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
@@ -201,9 +254,11 @@ export default function AboutPage() {
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-accent">
               Our Corporate Slogan
             </p>
-            <blockquote className="text-2xl md:text-3xl font-bold leading-snug">
-              &ldquo;Innovating the Future of Construction &amp; Facilities Management&rdquo;
-            </blockquote>
+            <ScrollReveal variant="blur-in" delay={200}>
+              <blockquote className="text-2xl md:text-3xl font-bold leading-snug">
+                &ldquo;Innovating the Future of Construction & Facilities Management&rdquo;
+              </blockquote>
+            </ScrollReveal>
           </div>
         </Container>
       </section>

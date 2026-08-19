@@ -12,6 +12,51 @@ export type SisterConcern = {
   address?: string;
 };
 
+export type AffiliatedCompany = {
+  slug: string;
+  name: string;
+  tagline: string;
+  category: string;
+  description: string;
+  highlights: string[];
+  website: string;
+};
+
+export const affiliatedCompanies: AffiliatedCompany[] = [
+  {
+    slug: "denzai-group",
+    name: "DenZai Group",
+    tagline: "International Engineering & Industrial Solutions Platform",
+    category: "Engineering & Industrial Solutions",
+    description:
+      "DenZai Group is a strategic international brand of RASS Associates dedicated to expanding our engineering, energy, and industrial solutions footprint across the Middle East, China, USA, and other global markets. Through strategic affiliations with international technology providers, manufacturers, EPC contractors, and business partners, DenZai Group delivers blended expertise spanning green energy, engineering, industrial solutions, project management, and international trading.",
+    highlights: [
+      "International market presence across the Middle East, China, USA, and emerging economies",
+      "Strategic partnerships with global technology providers, manufacturers, and EPC contractors",
+      "End-to-end project management from feasibility through execution and operations",
+      "International trading capabilities for industrial equipment, machinery, and energy infrastructure",
+      "Blended expertise across green energy, engineering, and industrial solutions",
+    ],
+    website: "https://www.denzai.group",
+  },
+  {
+    slug: "conveyor-bangladesh",
+    name: "Conveyor Bangladesh",
+    tagline: "Industrial Conveying & Material Handling Solutions",
+    category: "Industrial Solutions & Trading",
+    description:
+      "Conveyor Bangladesh is a specialized industrial brand focused on the engineering, supply, installation, and maintenance of conveyor systems, material handling equipment, and bulk solids processing solutions. Leveraging strategic affiliations with international conveyor technology manufacturers, we serve power plants, cement factories, ports, and industrial manufacturing facilities across Bangladesh and the regional market.",
+    highlights: [
+      "Design, supply, and installation of belt conveyor systems for heavy industry",
+      "International partnerships with conveyor technology manufacturers and specialists",
+      "Bulk material handling solutions for power plants, ports, and industrial facilities",
+      "Spare parts supply, retrofitting, and routine conveyor maintenance services",
+      "Industrial equipment trading supporting international OEM supply chains",
+    ],
+    website: "https://www.conveyor.com.bd",
+  },
+];
+
 export const sisterConcerns: SisterConcern[] = [
   {
     slug: "rass-resort",

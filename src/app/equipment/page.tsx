@@ -20,6 +20,8 @@ import {
   Zap,
 } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import {
   dredgingFleet,
@@ -58,7 +60,7 @@ export default function EquipmentPage() {
       {/* Fleet Overview Stats */}
       <Section className="py-12 bg-primary-dark text-white border-b border-white/10">
         <Container>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 text-center">
+          <StaggerContainer className="grid grid-cols-2 gap-6 sm:grid-cols-4 text-center" staggerMs={100}>
             <div>
               <div className="text-3xl sm:text-4xl font-extrabold text-accent font-heading">
                 100+
@@ -91,7 +93,7 @@ export default function EquipmentPage() {
                 Modular Steel Shuttering
               </div>
             </div>
-          </div>
+          </StaggerContainer>
         </Container>
       </Section>
 
@@ -102,43 +104,68 @@ export default function EquipmentPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
               Marine Civil Infrastructure
             </span>
-            <h2 className="text-3xl font-extrabold text-primary md:text-4xl font-heading mt-1">
-              Specialized Dredging &amp; Marine Fleet
-            </h2>
-            <p className="mt-3 text-base text-text-muted">
-              High-power cutter suction dredgers and marine logistics craft equipped for navigation
-              channel maintenance and massive hydraulic land filling.
-            </p>
+            <WordReveal
+              text="Specialized Dredging & Marine Fleet"
+              as="h2"
+              className="text-3xl font-extrabold text-primary md:text-4xl font-heading mt-1 mb-6"
+              staggerMs={50}
+              duration={600}
+            />
+            <ScrollReveal variant="fade-up" delay={300}>
+              <p className="mt-3 text-base text-text-muted">
+                High-power cutter suction dredgers and marine logistics craft equipped for navigation
+                channel maintenance and massive hydraulic land filling.
+              </p>
+            </ScrollReveal>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {dredgingFleet.map((vessel) => (
-              <div
-                key={vessel.name}
-                className="rounded-2xl border border-border bg-white p-7 shadow-sm transition-all hover:shadow-md hover:border-accent/40 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Ship className="h-6 w-6 text-primary" />
-                    </div>
-                    <span className="rounded-full bg-surface px-3 py-1 text-xs font-bold text-accent">
-                      {vessel.category}
-                    </span>
+          <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
+            {dredgingFleet.map((vessel, i) => {
+              const fleetImages = [
+                "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600&h=400&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=400&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=600&h=400&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&h=400&fit=crop&q=80",
+              ];
+              const fleetImage = fleetImages[i % fleetImages.length];
+              return (
+                <div
+                  key={vessel.name}
+                  className="rounded-2xl border border-border bg-white shadow-sm transition-all hover:shadow-md hover:border-accent/40 flex flex-col justify-between overflow-hidden"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={fleetImage}
+                      alt={vessel.name}
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
-                  <h3 className="text-lg font-bold text-primary mb-4">{vessel.name}</h3>
-                  <ul className="space-y-2.5">
-                    {vessel.specs.map((spec) => (
-                      <li key={spec} className="flex items-start gap-2.5 text-xs sm:text-sm text-text-muted">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="p-7 flex flex-col flex-1">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Ship className="h-6 w-6 text-primary" />
+                      </div>
+                      <span className="rounded-full bg-surface px-3 py-1 text-xs font-bold text-accent">
+                        {vessel.category}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-primary mb-4">{vessel.name}</h3>
+                    <ul className="space-y-2.5">
+                      {vessel.specs.map((spec) => (
+                        <li key={spec} className="flex items-start gap-2.5 text-xs sm:text-sm text-text-muted">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                          <span>{spec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              );
+            })}
+          </StaggerContainer>
         </Container>
       </Section>
 
@@ -150,12 +177,18 @@ export default function EquipmentPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-accent">
                 Inventory Database
               </span>
-              <h2 className="text-3xl font-extrabold text-primary md:text-4xl font-heading mt-1">
-                Equipment &amp; Machinery Fleet
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-text-muted">
-                Search and filter RASS Associates Ltd&apos;s active machinery and tooling inventory.
-              </p>
+              <WordReveal
+                text="Equipment & Machinery Fleet"
+                as="h2"
+                className="text-3xl font-extrabold text-primary md:text-4xl font-heading mt-6 mb-6"
+                staggerMs={50}
+                duration={600}
+              />
+              <ScrollReveal variant="fade-up" delay={200}>
+                <p className="mt-2 text-sm sm:text-base text-text-muted">
+                  Search and filter RASS Associates Ltd{"'"}s active machinery and tooling inventory.
+                </p>
+              </ScrollReveal>
             </div>
 
             {/* Search Input */}

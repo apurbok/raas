@@ -15,6 +15,8 @@ import {
   Wrench,
 } from "lucide-react";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import { getProject, projects } from "@/content/projects";
 import { cn } from "@/lib/utils";
@@ -61,6 +63,31 @@ export default async function ProjectDetailPage({ params }: Props) {
         ]}
       />
 
+      {/* Project Hero Image */}
+      <Section className="py-0">
+        <Container>
+          <div className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
+            <div className="relative aspect-[21/7]">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                  {project.title}
+                </h2>
+                <p className="mt-1 text-sm sm:text-base text-white/80">
+                  {project.summary}
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section className="py-16 md:py-24">
         <Container>
           {/* Back link and metadata badges */}
@@ -95,7 +122,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* Quick Metrics Strip */}
           {project.metrics && project.metrics.length > 0 && (
             <div className="mb-12 rounded-2xl bg-primary-dark p-6 sm:p-8 text-white shadow-xl">
-              <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:divide-x sm:divide-white/15">
+              <StaggerContainer className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:divide-x sm:divide-white/15" staggerMs={100}>
                 {project.metrics.map((metric) => (
                   <div key={metric.label} className="text-center px-3">
                     <div className="text-2xl sm:text-3xl font-extrabold text-accent font-heading">
@@ -106,7 +133,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     </div>
                   </div>
                 ))}
-              </div>
+              </StaggerContainer>
             </div>
           )}
 
@@ -119,15 +146,23 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <span className="text-xs font-bold uppercase tracking-wider text-accent">
                   Case Study Details
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-primary font-heading mt-1 mb-4">
-                  Project Overview &amp; Execution Scope
-                </h2>
-                <p className="text-base sm:text-lg text-text-muted leading-relaxed font-medium mb-4">
-                  {project.overview}
-                </p>
-                <p className="text-base text-text-muted leading-relaxed">
-                  {project.scope}
-                </p>
+                <WordReveal
+                  text="Project Overview & Execution Scope"
+                  as="h2"
+                  className="text-2xl sm:text-3xl font-extrabold text-primary font-heading mt-6 mb-6"
+                  staggerMs={50}
+                  duration={600}
+                />
+                <ScrollReveal variant="fade-up" delay={200}>
+                  <p className="text-base sm:text-lg text-text-muted leading-relaxed font-medium mb-4">
+                    {project.overview}
+                  </p>
+                </ScrollReveal>
+                <ScrollReveal variant="fade-up" delay={350}>
+                  <p className="text-base text-text-muted leading-relaxed">
+                    {project.scope}
+                  </p>
+                </ScrollReveal>
               </div>
 
               {/* Challenge vs Solution Cards */}
@@ -165,7 +200,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <Layers className="h-6 w-6 text-accent" />
                   Key Completed Scope &amp; Deliverables
                 </h3>
-                <div className="space-y-3">
+                <StaggerContainer className="space-y-3" staggerMs={80}>
                   {project.deliverables.map((item) => (
                     <div
                       key={item}
@@ -177,7 +212,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                       </span>
                     </div>
                   ))}
-                </div>
+                </StaggerContainer>
               </div>
 
               {/* Equipment Deployed on Site */}

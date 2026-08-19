@@ -65,7 +65,7 @@ export const navigation = {
   header: [
     { label: "Home", href: "/" },
     {
-      label: "About Us",
+      label: "About",
       href: "/about/",
       children: [
         { label: "Who We Are", href: "/about/#who-we-are", description: "Our heritage, overview and corporate commitment" },
@@ -73,6 +73,7 @@ export const navigation = {
         { label: "Our Vision", href: "/about/#vision", description: "Market leadership in construction & facility management" },
         { label: "Core Values", href: "/about/#values", description: "Excellence, collaboration, innovation, integrity, discipline" },
         { label: "Meet Our Team", href: "/leadership/", description: "Executive leadership and technical directors" },
+        { label: "Affiliated Companies", href: "/sister-concerns/#affiliated", description: "DenZai Group & Conveyor Bangladesh" },
         { label: "Sister Concerns", href: "/sister-concerns/", description: "RASS Resort, NRL Eco Bricks & Orbed Green Energy" },
       ],
     },
@@ -104,15 +105,17 @@ export const navigation = {
         { label: "View All Projects →", href: "/projects/", description: "Browse complete portfolio" },
       ],
     },
-    { label: "Resources and Equipment", href: "/equipment/" },
+    { label: "Oil & Gas", href: "/oil-gas/" },
+    { label: "Equipment", href: "/equipment/" },
     { label: "HES", href: "/hse/" },
     { label: "CSR", href: "/csr/" },
-    { label: "Contact Us", href: "/contact/" },
+    { label: "Contact", href: "/contact/" },
   ],
   footer: [
-    { label: "About Us", href: "/about/" },
+    { label: "About", href: "/about/" },
     { label: "Services", href: "/services/" },
     { label: "Projects", href: "/projects/" },
+    { label: "Oil & Gas", href: "/oil-gas/" },
     { label: "Resources & Equipment", href: "/equipment/" },
     { label: "HES Policy", href: "/hse/" },
     { label: "CSR", href: "/csr/" },

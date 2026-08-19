@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { StaggerContainer } from "@/components/ui/ScrollReveal";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import { services } from "@/content/services";
 
@@ -22,19 +24,25 @@ export default function ServicesPage() {
 
       <Section>
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </Section>
 
       <Section className="bg-surface">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold text-primary">Need a Custom Solution?</h2>
-            <p className="mb-6 text-text-muted">
+            <WordReveal
+              text="Need a Custom Solution?"
+              as="h2"
+              className="mb-4 text-2xl font-bold text-primary"
+              staggerMs={50}
+              duration={600}
+            />
+            <p className="mb-6 text-text-muted animate-fade-up" style={{ animationDelay: "300ms", animationDuration: "700ms" }}>
               Our team can tailor services to meet your specific project requirements. Get in touch for a
               consultation.
             </p>

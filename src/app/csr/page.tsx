@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { StaggerContainer } from "@/components/ui/ScrollReveal";
 import { company } from "@/content/company";
 import { csrPolicy } from "@/content/policies";
 
@@ -19,7 +20,18 @@ export default function CSRPage() {
 
       <Section>
         <Container>
-          <div className="mx-auto max-w-4xl space-y-8">
+          <div className="relative mb-12 overflow-hidden rounded-2xl border border-border shadow-lg">
+            <div className="relative aspect-[21/8]">
+              <img
+                src="https://images.unsplash.com/photo-1559027619-0676a3a99a4b?w=1600&h=610&fit=crop&q=80"
+                alt="Community development and corporate social responsibility"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+          </div>
+          <StaggerContainer className="mx-auto max-w-4xl space-y-8" staggerMs={80}>
             {csrPolicy.sections.map((section, i) => (
               <div key={section.title} className="rounded-xl border border-border p-6 md:p-8">
                 <div className="mb-3 flex items-center gap-3">
@@ -31,7 +43,7 @@ export default function CSRPage() {
                 <p className="text-text-muted leading-relaxed">{section.content}</p>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </Section>
     </>

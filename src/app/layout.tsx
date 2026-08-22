@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     "dredging",
     "RASS Associates",
   ],
+  icons: {
+    icon: [
+      { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     title: company.name,
     description: company.tagline,

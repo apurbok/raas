@@ -3,7 +3,7 @@ export const company = {
   tagline: "Where Engineering Meets Excellence",
   slogan: "Innovating the Future of Construction & Facilities Management",
   description:
-    "Premier construction and facilities management company in Bangladesh, delivering large-scale residential, commercial, industrial, power, and marine infrastructure projects.",
+    "International engineering, energy, and industrial solutions platform delivering blended expertise across green energy, oil & gas infrastructure, industrial solutions, project management, and international trading — backed by 42+ years of combined international experience through strategic affiliations including BlueArc (www.bluearchl.com).",
   address: {
     street: "House 482 (1st Floor), Road 6, Avenue 6",
     area: "Mirpur DOHS",
@@ -16,7 +16,7 @@ export const company = {
 } as const;
 
 export const stats = [
-  { label: "Years of Experience", value: 25, suffix: "+" },
+  { label: "Years of Experience", value: 42, suffix: "+" },
   { label: "Major Projects", value: 50, suffix: "+" },
   { label: "MW Infrastructure", value: 1500, suffix: "+" },
   { label: "Equipment Fleet", value: 100, suffix: "+" },

@@ -8,7 +8,7 @@ import { company, values } from "@/content/company";
 
 export const metadata: Metadata = {
   title: "About Us | RASS Associates Ltd",
-  description: `Learn about ${company.name} — our mission, vision, values, and commitment to engineering excellence across Bangladesh.`,
+  description: `Learn about ${company.name} — an international engineering, energy, and industrial solutions platform backed by 42+ years of combined international experience in oil & gas, green energy, and industrial infrastructure.`,
 };
 
 export default function AboutPage() {
@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         title="About RASS Associates"
-        description="A premier construction and facilities management leader in Bangladesh, transforming client visions into durable, landmark reality."
+        description="An international engineering, energy, and industrial solutions platform delivering blended expertise across oil & gas, green energy, industrial solutions, project management, and trading — backed by 42+ years of combined international experience."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
       />
 
@@ -38,34 +38,33 @@ export default function AboutPage() {
               />
               <ScrollReveal variant="fade-up" delay={200}>
               <p className="mb-4 text-base text-text-muted leading-relaxed">
-                <strong className="text-primary font-semibold">RASS Associates Ltd</strong> is a premier
-                construction and facilities management company based in Bangladesh, renowned for its
-                unwavering commitment to excellence and its extensive experience in delivering
-                large-scale, complex projects. With nearly decades of experience in the industry, RASS
-                Associates Ltd has built a stellar reputation for transforming client visions into
-                reality, managing projects from initial conceptualization through to completion, and
-                maintaining the highest standards of quality and service throughout the project lifecycle.
+                <strong className="text-primary font-semibold">RASS Associates Ltd</strong> is an international
+                engineering, energy, and industrial solutions platform delivering blended expertise across green
+                energy, oil & gas infrastructure, industrial solutions, project management, and international
+                trading. Backed by <strong className="text-primary font-semibold">42+ years of combined international
+                experience</strong> through strategic affiliations including BlueArc (www.bluearchl.com), we present
+                ourselves not simply as a solar or energy company, but as a comprehensive solutions provider with
+                proven capabilities across the Middle East, China, USA, and other global markets.
               </p>
               </ScrollReveal>
               <ScrollReveal variant="fade-up" delay={350}>
               <p className="mb-6 text-base text-text-muted leading-relaxed">
-                We pride ourselves on being a versatile player in the construction sector, with a
-                diverse portfolio that spans a wide array of industries. Our expertise covers
-                residential, commercial, industrial, and infrastructure projects, making us a go-to
-                partner for clients seeking reliable, innovative, and cost-effective solutions. Whether
-                {"it's"} a multi-story office building, a luxury residential complex, a power plant, or
-                public infrastructure like roads and bridges, RASS Associates Ltd has consistently
-                delivered projects that exceed expectations.
+                Our team has extensive experience working in the Oil & Gas sector, with a track record of
+                delivering complex energy infrastructure projects across international markets. Through strategic
+                affiliations with international technology providers, manufacturers, EPC contractors, and business
+                partners, we deliver solutions that meet the highest global standards. Whether it's oil & gas
+                infrastructure, renewable energy projects, industrial facilities, or cross-border trading ventures,
+                RASS Associates Ltd has consistently delivered projects that exceed expectations.
               </p>
               </ScrollReveal>
               <ScrollReveal variant="fade-up" delay={500}>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/leadership/"
+                  href="/oil-gas/"
                   className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary-dark"
                 >
-                  <Users className="h-4 w-4" />
-                  Meet Our Leadership Team
+                  <Compass className="h-4 w-4" />
+                  Explore Oil & Gas Capabilities
                 </Link>
                 <Link
                   href="/projects/"
@@ -98,14 +97,15 @@ export default function AboutPage() {
                   </h3>
                   <p className="mb-6 text-sm text-text-muted leading-relaxed">
                     We are committed to delivering projects on time, within budget, and with the highest
-                    quality standards. Our vision is to be the preferred partner for clients, setting
-                    benchmarks for others to follow.
+                    quality standards. Through our strategic affiliation with BlueArc and 42+ years of combined
+                    international experience, we bring global best practices to every project while maintaining
+                    the highest standards of safety, sustainability, and client satisfaction.
                   </p>
                   <div className="space-y-3">
                     {[
-                      "Over 25+ years of combined engineering and leadership mastery",
-                      "Proven execution on mega-scale thermal and solar power plants",
-                      "Full in-house machinery, concrete batching, and marine dredging fleet",
+                      "42+ years of combined international experience in oil & gas and engineering",
+                      "Proven execution on mega-scale oil & gas, power plant, and industrial projects",
+                      "Strategic affiliations with international technology providers and EPC contractors",
                       "Rigorous Health, Environment & Safety (HES) zero-accident protocols",
                     ].map((item) => (
                       <div key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-text">
@@ -146,17 +146,18 @@ export default function AboutPage() {
                 </div>
                 <h2 className="mb-4 text-2xl font-bold text-primary">Our Mission</h2>
                 <p className="text-base text-text-muted leading-relaxed mb-4">
-                  Our mission at RASS Associates Ltd is to consistently exceed our client&apos;s
-                  expectations by delivering high-quality construction services. We achieve this through
-                  a strong commitment to teamwork, fostering a culture of collaboration and mutual
-                  support among our professionals, clients, and partners.
+                  Our mission at RASS Associates Ltd is to be the preferred international engineering, energy,
+                  and industrial solutions partner, delivering blended expertise across oil & gas, green
+                  energy, industrial solutions, project management, and trading. We achieve this through strategic
+                  affiliations with global partners, fostering a culture of collaboration and mutual support
+                  among our professionals, clients, and international partners.
                 </p>
                 <p className="text-base text-text-muted leading-relaxed">
-                  We prioritize innovation in every phase of our work, from design to execution,
-                  ensuring that our solutions are always ahead of industry trends. Above all, we
-                  emphasize safety and sustainability in every aspect of our operations. Our mission is
-                  not only to meet the immediate needs of our clients but to build enduring
-                  relationships based on trust, reliability, and exceptional performance.
+                  We prioritize innovation in every phase of our work, from design to execution, ensuring that
+                  our solutions are always ahead of industry trends. Above all, we emphasize safety and
+                  sustainability in every aspect of our operations. Our mission is not only to meet the immediate
+                  needs of our clients but to build enduring relationships based on trust, reliability, and
+                  exceptional performance across the Middle East, China, USA, and other international markets.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/60 text-xs font-semibold text-accent uppercase tracking-wider">
@@ -185,14 +186,16 @@ export default function AboutPage() {
                 </div>
                 <h2 className="mb-4 text-2xl font-bold text-primary">Our Vision</h2>
                 <p className="text-base text-text-muted leading-relaxed mb-4">
-                  Our vision is to be the market leader in construction and facilities management in
-                  Bangladesh. We aim to be recognized not just for our excellence in project execution
-                  but also for our commitment to sustainability, innovation, and client satisfaction.
+                  Our vision is to be the market leader in international engineering, energy, and industrial
+                  solutions, with strong positioning across the Middle East, China, USA, and other global
+                  markets. We aim to be recognized not just for our excellence in project execution but also
+                  for our commitment to sustainability, innovation, and client satisfaction through strategic
+                  international partnerships.
                 </p>
                 <p className="text-base text-text-muted leading-relaxed">
-                  By aligning our engineering capabilities with national development initiatives and
-                  investing in state-of-the-art construction and dredging technologies, we aim to shape
-                  the modern infrastructural landscape of Bangladesh for generations to come.
+                  By aligning our engineering capabilities with global development initiatives and investing in
+                  state-of-the-art construction, dredging, and energy technologies, we aim to shape the modern
+                  infrastructural landscape across international markets for generations to come.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/60 text-xs font-semibold text-primary uppercase tracking-wider">

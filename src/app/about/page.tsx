@@ -52,7 +52,7 @@ export default function AboutPage() {
                 Our team has extensive experience working in the Oil & Gas sector, with a track record of
                 delivering complex energy infrastructure projects across international markets. Through strategic
                 affiliations with international technology providers, manufacturers, EPC contractors, and business
-                partners, we deliver solutions that meet the highest global standards. Whether it's oil & gas
+                partners, we deliver solutions that meet the highest global standards. Whether it&apos;s oil & gas
                 infrastructure, renewable energy projects, industrial facilities, or cross-border trading ventures,
                 RASS Associates Ltd has consistently delivered projects that exceed expectations.
               </p>

@@ -23,7 +23,7 @@ export default function CSRPage() {
           <div className="relative mb-12 overflow-hidden rounded-2xl border border-border shadow-lg">
             <div className="relative aspect-[21/8]">
               <img
-                src="https://images.unsplash.com/photo-1559027619-0676a3a99a4b?w=1600&h=610&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop&q=80"
                 alt="Community development and corporate social responsibility"
                 className="h-full w-full object-cover"
                 loading="lazy"

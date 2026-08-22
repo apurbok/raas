@@ -166,8 +166,8 @@ export default function ContactPage() {
               <div className="mt-8 overflow-hidden rounded-xl border border-border">
                 <iframe
                   title="RASS Associates office location"
-                  src="https://maps.google.com/maps?q=Mirpur+DOHS+Dhaka+1216+Bangladesh&output=embed"
-                  className="h-64 w-full border-0"
+                   src="https://maps.google.com/maps?ll=23.6137,90.3786&z=4&output=embed&q=Mirpur+DOHS+Dhaka+1216+Bangladesh"
+                   className="h-80 w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />

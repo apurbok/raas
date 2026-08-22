@@ -1,47 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 export function StatCounter({
   value,
   suffix = "",
   label,
+  startValue = 0,
+  duration = 1500,
+  delay = 0,
 }: {
   value: number;
   suffix?: string;
   label: string;
+  /** Value to animate FROM (defaults to 0). Set this to avoid incrementing from 0. */
+  startValue?: number;
+  /** Animation duration in milliseconds. */
+  duration?: number;
+  /** Delay before animation starts (ms), useful for staggering. */
+  delay?: number;
 }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const duration = 1500;
-          const start = performance.now();
-
-          const animate = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * value));
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.3 },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [value]);
+  const { count, ref } = useCountUp(value, { startValue, duration, delay });
 
   return (
     <div ref={ref} className="text-center">

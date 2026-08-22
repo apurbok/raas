@@ -114,10 +114,10 @@ export default function HomePage() {
                 { logo: "https://images.seeklogo.com/logo-png/42/1/bpdb-rpcl-powergen-ltd-logo-png_seeklogo-428610.png", label: "BPDB", full: "Bangladesh Power Development Board" },
                 { logo: "https://images.seeklogo.com/logo-png/11/2/reb-logo-png_seeklogo-116569.png", label: "REB", full: "Rural Electrification Board" },
                 { logo: "https://images.seeklogo.com/logo-png/34/1/biwta-logo-png_seeklogo-342197.png", label: "BIWTA", full: "Bangladesh Inland Water Transport Authority" },
-                { logo: "https://career.bcpcl.org.bd/public/employee/assets/images/BCPCL.png", label: "BCPCL", full: "Bangladesh China Power Co. Ltd." },
+                { logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I5KC6FcPLGcE5g8Mnk3FZ95udKMd5ttZ4xPCyyXdSw&s", label: "BCPCL", full: "Bangladesh China Power Co. Ltd." },
                 { wordmark: true, label: "NWPGCL", full: "North West Power Generation Co." },
                 { wordmark: true, label: "PAYRA PORT", full: "Payra Port Authority" },
-                { logo: "https://internationalcontracts.net/templates/internationalcontracts/img/logo.png", label: "ICC", full: "International Contracts Co." },
+                { logo: "https://vectorseek.com/wp-content/uploads/2023/09/Nesco-Logo-Vector.svg-.png", label: "ICC", full: "International Contracts Co." },
               ].map((client) => (
                 <div key={client.label} className="flex flex-col items-center justify-center text-center">
                   {client.logo ? (

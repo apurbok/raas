@@ -2,7 +2,70 @@
 
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/content/company";
+import { useCountUp } from "@/hooks/useCountUp";
 import { cn } from "@/lib/utils";
+
+/**
+ * Individual animated stat cell. Uses `useCountUp` to increment the value
+ * gradually from a `startValue` of 1 rather than from 0.
+ */
+function AnimatedStat({
+  stat,
+  isSticky,
+  index,
+}: {
+  stat: (typeof stats)[number];
+  isSticky: boolean;
+  index: number;
+}) {
+  // Start from 1 so the number increments gradually while displaying,
+  // but never counts up from zero.
+  const startValue = 1;
+  const { count, ref } = useCountUp(stat.value, {
+    startValue,
+    duration: 1600,
+    delay: index * 150,
+    threshold: 0.3,
+  });
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex flex-col items-center justify-center transition-all duration-300",
+        index > 0 && "md:border-l md:border-white/15",
+        isSticky ? "py-1" : "py-2",
+      )}
+    >
+      <div className="flex items-baseline gap-0.5 leading-none">
+        <span
+          className={cn(
+            "font-extrabold text-white font-heading tracking-tight transition-all duration-300",
+            isSticky ? "text-2xl sm:text-3xl" : "text-3xl sm:text-4xl md:text-5xl",
+          )}
+        >
+          {count.toLocaleString()}
+        </span>
+        <span
+          className={cn(
+            "font-bold text-accent transition-all duration-300",
+            isSticky ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl md:text-4xl",
+          )}
+        >
+          {stat.suffix}
+        </span>
+      </div>
+      <span
+        className={cn(
+          "font-medium text-white/80 uppercase tracking-wider transition-all duration-300",
+          isSticky ? "text-[11px] sm:text-xs mt-1" : "text-xs sm:text-sm mt-2",
+        )}
+      >
+        {stat.label}
+      </span>
+    </div>
+  );
+}
 
 export function StickyStatsBar() {
   const [scrollY, setScrollY] = useState(0);
@@ -71,41 +134,12 @@ export function StickyStatsBar() {
       >
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 items-center text-center">
           {stats.map((stat, i) => (
-            <div
+            <AnimatedStat
               key={stat.label}
-              className={cn(
-                "flex flex-col items-center justify-center transition-all duration-300",
-                i > 0 && "md:border-l md:border-white/15",
-                isSticky ? "py-1" : "py-2",
-              )}
-            >
-              <div className="flex items-baseline gap-0.5 leading-none">
-                <span
-                  className={cn(
-                    "font-extrabold text-white font-heading tracking-tight transition-all duration-300",
-                    isSticky ? "text-2xl sm:text-3xl" : "text-3xl sm:text-4xl md:text-5xl",
-                  )}
-                >
-                  {stat.value}
-                </span>
-                <span
-                  className={cn(
-                    "font-bold text-accent transition-all duration-300",
-                    isSticky ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl md:text-4xl",
-                  )}
-                >
-                  {stat.suffix}
-                </span>
-              </div>
-              <span
-                className={cn(
-                  "font-medium text-white/80 uppercase tracking-wider transition-all duration-300",
-                  isSticky ? "text-[11px] sm:text-xs mt-1" : "text-xs sm:text-sm mt-2",
-                )}
-              >
-                {stat.label}
-              </span>
-            </div>
+              stat={stat}
+              isSticky={isSticky}
+              index={i}
+            />
           ))}
         </div>
       </div>

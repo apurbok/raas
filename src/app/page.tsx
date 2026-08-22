@@ -1,27 +1,33 @@
 import Link from "next/link";
-import { ArrowRight, Building2, CheckCircle2, Factory, Landmark, ShieldCheck, Sparkles, Sun, Waves } from "lucide-react";
-import { ProjectCard } from "@/components/cards/ProjectCard";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { ServiceCard } from "@/components/cards/ServiceCard";
-import { SisterConcernFlipCard } from "@/components/cards/SisterConcernFlipCard";
 import { HeroSlider } from "@/components/home/HeroSlider";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { CTABanner, Container, Section, SectionHeading } from "@/components/ui/Section";
 import { StickyStatsBar } from "@/components/ui/StickyStatsBar";
 import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
-import { GradientText, WordReveal } from "@/components/ui/AnimatedText";
-import { company, values } from "@/content/company";
+import { WordReveal } from "@/components/ui/AnimatedText";
 import { mdMessage } from "@/content/leadership";
-import { getFeaturedProjects } from "@/content/projects";
 import { services } from "@/content/services";
 
-export default function HomePage() {
-  const featuredProjects = getFeaturedProjects();
+const clientLogos = [
+  { logo: "https://images.seeklogo.com/logo-png/25/1/dhaka-electric-supply-company-logo-png_seeklogo-258514.png", label: "DESCO" },
+  { logo: "https://images.seeklogo.com/logo-png/42/1/bpdb-rpcl-powergen-ltd-logo-png_seeklogo-428610.png", label: "BPDB" },
+  { logo: "https://images.seeklogo.com/logo-png/25/1/dhaka-electric-supply-company-logo-png_seeklogo-258514.png", label: "DESCO 2" },
+  { logo: "https://images.seeklogo.com/logo-png/34/1/biwta-logo-png_seeklogo-342197.png", label: "BIWTA" },
+  { logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I5KC6FcPLGcE5g8Mnk3FZ95udKMd5ttZ4xPCyyXdSw&s", label: "BCPCL" },
+  { logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/North-West_Power_Generation_Company_Ltd_logo.svg/1200px-North-West_Power_Generation_Company_Ltd_logo.svg.png", label: "NWPGCL" },
+  { logo: "https://images.seeklogo.com/logo-png/11/2/reb-logo-png_seeklogo-116569.png", label: "REB" },
+  { logo: "https://vectorseek.com/wp-content/uploads/2023/09/Nesco-Logo-Vector.svg-.png", label: "ICC" },
+];
 
+export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Image Slider (Reference ss-4 & Mazada Group) */}
+      {/* 1. Hero Image Slider */}
       <HeroSlider />
 
-      {/* 2. Sticky Scroll-Scaled Stats Bar (Reference ss-3) */}
+      {/* 2. Sticky Scroll-Scaled Stats Bar */}
       <StickyStatsBar />
 
       {/* 3. About Teaser Section */}
@@ -99,40 +105,25 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* 4. Who We Worked For - Client Logos Grid */}
-      <Section className="bg-surface py-16 md:py-24 border-y border-border">
+      {/* 4. Trusted by Leading Organizations - Logos left-aligned, larger, colored */}
+      <Section className="bg-white py-16 md:py-20">
         <Container>
           <SectionHeading
-            eyebrow="Who We Worked For"
-            title="Trusted by Leading Organizations"
-            description="From national power utilities to international developers, we deliver critical infrastructure for Bangladesh's most important projects."
+            eyebrow="Trusted by"
+            title="Leading Organizations"
+            description="From national power utilities to international developers, delivering critical infrastructure for Bangladesh's most important projects."
+            centered={false}
           />
           <ScrollReveal>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 lg:gap-x-14">
-              {[
-                { logo: "https://images.seeklogo.com/logo-png/25/1/dhaka-electric-supply-company-logo-png_seeklogo-258514.png", label: "DESCO", full: "Dhaka Electric Supply Co." },
-                { logo: "https://images.seeklogo.com/logo-png/42/1/bpdb-rpcl-powergen-ltd-logo-png_seeklogo-428610.png", label: "BPDB", full: "Bangladesh Power Development Board" },
-                { logo: "https://images.seeklogo.com/logo-png/11/2/reb-logo-png_seeklogo-116569.png", label: "REB", full: "Rural Electrification Board" },
-                { logo: "https://images.seeklogo.com/logo-png/34/1/biwta-logo-png_seeklogo-342197.png", label: "BIWTA", full: "Bangladesh Inland Water Transport Authority" },
-                { logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7I5KC6FcPLGcE5g8Mnk3FZ95udKMd5ttZ4xPCyyXdSw&s", label: "BCPCL", full: "Bangladesh China Power Co. Ltd." },
-                { wordmark: true, label: "NWPGCL", full: "North West Power Generation Co." },
-                { wordmark: true, label: "PAYRA PORT", full: "Payra Port Authority" },
-                { logo: "https://vectorseek.com/wp-content/uploads/2023/09/Nesco-Logo-Vector.svg-.png", label: "ICC", full: "International Contracts Co." },
-              ].map((client) => (
-                <div key={client.label} className="flex flex-col items-center justify-center text-center">
-                  {client.logo ? (
-                    <img
-                      src={client.logo}
-                      alt={`${client.label} logo`}
-                      className="h-24 sm:h-28 w-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <p className="text-2xl sm:text-3xl font-heading font-extrabold tracking-tight text-text-muted/70 transition-colors hover:text-primary cursor-default select-none">
-                      {client.label}
-                    </p>
-                  )}
-                  <p className="mt-3 text-sm font-bold text-text-muted/70">{client.full}</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 items-center">
+              {clientLogos.map((client) => (
+                <div key={client.label} className="flex items-center justify-start">
+                  <img
+                    src={client.logo}
+                    alt={`${client.label} logo`}
+                    className="h-24 sm:h-28 lg:h-32 w-auto object-contain transition-all duration-300 hover:scale-110"
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
@@ -156,52 +147,36 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* 5. Why Choose Us? - Replaces Featured Landmark Projects */}
-      <Section className="bg-primary text-white py-16 md:py-20">
+      {/* 6. Why Choose Us - Accordion with centered title/description */}
+      <Section className="bg-surface py-16 md:py-24 border-y border-border overflow-hidden">
         <Container>
-          <div className="mx-auto max-w-4xl rounded-2xl border border-white/20 bg-white/5 p-8 md:p-12 shadow-sm text-center md:text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Why Choose Us?
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-primary font-heading">
+              Why Choose Us
             </h2>
-            <p className="text-base text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
-              Decades of proven track record on national landmark mega-projects (e.g. Payra 1320MW).
-              Complete in-house machinery fleet eliminating subcontractor delays. Turnkey delivery from conceptual
-              design to final handover. Uncompromising focus on structural safety and durability.
+            <p className="mx-auto mt-4 max-w-2xl text-text-muted leading-relaxed">
+              Building Trust Through Excellence — decades of proven success, comprehensive in-house
+              capabilities, and an unwavering commitment to safety, quality, and innovation define every
+              project we deliver.
             </p>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-              <div className="p-3 bg-white/10 rounded-lg">
-                <p className="text-xs font-bold text-white uppercase">Decades of Experience</p>
-                <p className="text-white/70">25+ years</p>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <p className="text-xs font-bold text-white uppercase">In-house Fleet</p>
-                <p className="text-white/70">100+ units</p>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <p className="text-xs font-bold text-white uppercase">Zero Compromise</p>
-                <p className="text-white/70">On-time delivery</p>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <p className="text-xs font-bold text-white uppercase">Structural Safety</p>
-                <p className="text-white/70">Durability guaranteed</p>
-              </div>
-            </div>
           </div>
+
+          <WhyChooseUs />
         </Container>
       </Section>
 
-      {/* 6. Dredging Division Spotlight */}
+      {/* 7. Dredging Division Spotlight */}
       <Section className="bg-primary text-white py-16 md:py-20">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7 flex flex-col">
+            <div className="lg:col-span-7">
               <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-accent">
                 Specialized Marine Division
               </span>
               <WordReveal
                 text="Capital Dredging & Marine Civil Works"
                 as="h2"
-                className="mb-4 text-3xl font-extrabold text-white md:text-4xl"
+                className="mb-4 text-3xl font-extrabold text-white md:text-4xl font-heading"
                 staggerMs={60}
                 duration={600}
               />
@@ -216,14 +191,14 @@ export default function HomePage() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/dredging/"
-                    className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white hover:bg-accent-hover transition-colors shadow-md"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white hover:bg-accent-hover transition-colors shadow-md"
                   >
                     Explore Dredging Capabilities
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/equipment/"
-                    className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-colors"
                   >
                     View Marine Fleet Specs
                   </Link>
@@ -239,25 +214,7 @@ export default function HomePage() {
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {[
-                        { title: "Capital Dredging", desc: "Channel deepening & silt clearing" },
-                        { title: "Land Reclamation", desc: "Hydraulic backfill for power parks" },
-                        { title: "Bank Protection", desc: "Scour revetment & anti-erosion" },
-                        { title: "Fleet Rental", desc: "22-inch & 20-inch CSD dredgers" },
-                      ].map((item) => (
-                        <div
-                          key={item.title}
-                          className="rounded-lg border border-white/15 bg-black/40 backdrop-blur-sm p-3"
-                        >
-                          <div className="font-bold text-white text-xs sm:text-sm">{item.title}</div>
-                          <div className="text-[10px] sm:text-xs text-white/70 mt-0.5">{item.desc}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
               </div>
             </div>
@@ -265,7 +222,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* 7. Managing Director Message */}
+      {/* 8. Managing Director Message */}
       <Section className="py-16 md:py-24">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12">
@@ -309,9 +266,23 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* 8. Final CTA - Replaces Sister Concerns */}
+      {/* 6.5 ISO Certification Banner - centered before footer */}
+      <Section className="bg-white py-16">
+        <Container>
+          <div className="flex justify-center">
+            <img
+              src="https://mazadagroup.com/wp-content/uploads/2025/03/download.png"
+              alt="ISO 9001:2015 Certified"
+              className="h-40 w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+        </Container>
+      </Section>
+
+      {/* 9. Final CTA */}
       <CTABanner
-        title="Why Choose Us?"
+        title="Partner with Us on Your Next Project"
         description="Contact our senior engineering and project management team today for technical consultation and tenders."
         href="/contact/"
         buttonText="Get in Touch with Us"

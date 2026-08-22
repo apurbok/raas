@@ -11,15 +11,17 @@ const serviceImages: Record<string, string> = {
   "landscaping": "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop&q=80",
   "road-pavement": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&h=600&fit=crop&q=80",
   "dredging-excavating": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop&q=80",
+  "oil-gas-services": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&h=600&fit=crop&q=80",
 };
 
 export function ServiceCard({ service }: { service: Service }) {
   const Icon = service.icon;
   const image = serviceImages[service.slug] || serviceImages["civil-construction"];
+  const href = service.href || `/services/${service.slug}/`;
 
   return (
     <Link
-      href={`/services/${service.slug}/`}
+      href={href}
       className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-accent/30 hover:shadow-md animate-scale-in"
     >
       <div className="relative aspect-[16/10] overflow-hidden">

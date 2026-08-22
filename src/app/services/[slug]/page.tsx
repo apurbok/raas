@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   ArrowRight,
   Award,
@@ -34,7 +34,7 @@ const serviceHeroImages: Record<string, string> = {
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return services.filter((s) => !s.href).map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -51,6 +51,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  if (service.href) redirect(service.href);
 
   const Icon = service.icon;
   const relatedProjects = projects.filter(
@@ -309,7 +310,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {services.map((s) => (
                     <Link
                       key={s.slug}
-                      href={`/services/${s.slug}/`}
+                      href={s.href || `/services/${s.slug}/`}
                       className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
                         s.slug === slug
                           ? "bg-accent text-white font-bold"

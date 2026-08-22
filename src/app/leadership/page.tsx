@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { TeamCard } from "@/components/cards/TeamCard";
 import { Container, PageHeader, Section } from "@/components/ui/Section";
-import { StaggerContainer } from "@/components/ui/ScrollReveal";
-import { WordReveal } from "@/components/ui/AnimatedText";
 import { company } from "@/content/company";
 import { leaders, mdMessage } from "@/content/leadership";
 
@@ -47,13 +45,9 @@ export default function LeadershipPage() {
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-accent">
                   Message from the Managing Director
                 </p>
-                <WordReveal
-                  text={mdMessage.author}
-                  as="h2"
-                  className="mb-6 text-2xl font-bold text-primary"
-                  staggerMs={50}
-                  duration={600}
-                />
+                <h2 className="mb-6 text-2xl font-bold text-primary">
+                  {mdMessage.author}
+                </h2>
                 <div className="space-y-4 text-text-muted leading-relaxed">
                   {mdMessage.content.split("\n\n").map((paragraph) => (
                     <p key={paragraph.slice(0, 40)}>{paragraph}</p>
@@ -63,11 +57,11 @@ export default function LeadershipPage() {
             </div>
           </div>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {sortedLeaders.map((leader) => (
               <TeamCard key={leader.slug} leader={leader} />
             ))}
-          </StaggerContainer>
+          </div>
         </Container>
       </Section>
     </>

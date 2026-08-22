@@ -91,10 +91,10 @@ export function HeroSlider() {
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
-      nextSlide();
-    }, 6000);
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [isPaused, current]);
+  }, [isPaused]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

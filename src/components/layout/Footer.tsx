@@ -1,13 +1,21 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { FacebookLogo, LinkedinLogo, TwitterLogo } from "@/components/ui/BrandIcons";
 import { company, navigation } from "@/content/company";
+
+const shareLinks = [
+  { label: "Facebook", href: "https://www.facebook.com/sharer/sharer.php?u=https://rassassociates.com", icon: FacebookLogo, bg: "#1877F2" },
+  { label: "X", href: "https://twitter.com/intent/tweet?url=https://rassassociates.com", icon: TwitterLogo, bg: "#000000" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/sharing/share-offsite/?url=https://rassassociates.com", icon: LinkedinLogo, bg: "#0A66C2" },
+  { label: "Mail", href: "mailto:?subject=RASS Associates Ltd&body=https://rassassociates.com", icon: Mail, bg: "#EA4335" },
+];
 
 export function Footer() {
   const fullAddress = `${company.address.street}, ${company.address.area}, ${company.address.city}, ${company.address.country}`;
 
   return (
     <footer className="border-t border-border bg-primary-dark text-white">
-      <div className="container-wide section-padding grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-wide section-padding grid gap-10 md:grid-cols-2 lg:grid-cols-5">
         <div>
           <h3 className="mb-4 text-lg font-bold text-white">RASS Associates Ltd</h3>
           <p className="mb-4 text-sm leading-relaxed text-white/70">{company.slogan}</p>
@@ -63,12 +71,61 @@ export function Footer() {
             Our Services
           </h4>
           <ul className="space-y-2 text-sm text-white/70">
-            <li>Civil Construction</li>
-            <li>Civil Engineering</li>
-            <li>Property Development</li>
-            <li>Dredging & Excavating</li>
-            <li>Asset Management</li>
+            <li>
+              <Link href="/services/civil-construction/" className="transition-colors hover:text-white">
+                Civil Construction
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/civil-engineering/" className="transition-colors hover:text-white">
+                Civil Engineering
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/property-development/" className="transition-colors hover:text-white">
+                Property Development
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/dredging-excavating/" className="transition-colors hover:text-white">
+                Dredging & Excavating
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/asset-management/" className="transition-colors hover:text-white">
+                Asset Management
+              </Link>
+            </li>
+            <li>
+              <Link href="/oil-gas/" className="transition-colors hover:text-white">
+                International Oil & Gas Services
+              </Link>
+            </li>
           </ul>
+        </div>
+
+        <div>
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
+            Share
+          </h4>
+          <div className="flex items-center gap-3">
+            {shareLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Share on ${link.label}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-transform hover:scale-110 hover:shadow-md"
+                  style={{ backgroundColor: link.bg }}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              );
+            })}
+          </div>
         </div>
       </div>
 

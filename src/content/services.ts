@@ -1,6 +1,7 @@
 import {
   Building2,
   Droplets,
+  Fuel,
   HardHat,
   Landmark,
   Leaf,
@@ -27,6 +28,7 @@ export type Service = {
   shortDescription: string;
   description: string;
   icon: LucideIcon;
+  href?: string;
   overview: string;
   sections: ServiceSection[];
   capabilities: string[];
@@ -798,6 +800,105 @@ export const services: Service[] = [
       "Massive volume handling capability exceeding 5 Crore CFT on critical national projects",
       "Self-contained marine fleet with dedicated crew accommodation houseboats",
       "Direct contributions to national landmark projects (Payra 1320MW Intake, Sirajganj Solar, Payra Port)",
+    ],
+  },
+  {
+    slug: "oil-gas-services",
+    title: "International Oil & Gas Services",
+    shortDescription:
+      "International engineering, energy, and industrial solutions for oil & gas infrastructure across global markets.",
+    description:
+      "RASS Associates Ltd's Oil & Gas division delivers world-class international energy infrastructure solutions, integrating proven construction and marine engineering capabilities with strategic global affiliations.",
+    icon: Fuel,
+    href: "/oil-gas/",
+    overview:
+      "Positioned as an international engineering, energy, and industrial solutions platform, RASS Associates delivers blended expertise across green energy, oil & gas infrastructure, industrial solutions, project management, and international trading — backed by decades of practical project experience across Bangladesh and expanding into the Middle East, China, USA, and global markets.",
+    sections: [
+      {
+        heading: "Oil & Gas Infrastructure Development",
+        body: "Design, construction, and maintenance of oil & gas infrastructure including storage terminals, pipeline networks, processing facilities, and LNG regasification plants.",
+        bulletPoints: [
+          "Storage tanks and terminal facilities for crude oil, refined products, and LPG",
+          "Cross-country pipeline construction and trenchless HDD pipeline crossings",
+          "Compressor stations, pump stations, and metering facilities",
+          "LNG regasification terminal civil works and marine loading infrastructure",
+        ],
+      },
+      {
+        heading: "Green Energy & Transition Projects",
+        body: "Combined expertise in renewable energy and clean fuel technologies, supporting the global energy transition through solar, wind, and hybrid energy infrastructure projects.",
+        bulletPoints: [
+          "Utility-scale solar PV farms and solar park civil infrastructure",
+          "International energy solution projects across global and regional markets",
+          "Battery energy storage systems (BESS) and renewable power integration",
+          "Carbon-neutral facility design and environmental compliance engineering",
+        ],
+      },
+      {
+        heading: "Industrial Solutions & EPC Services",
+        body: "Full-cycle industrial solutions spanning engineering, procurement, and construction with specialized capabilities for international power plants, processing facilities, and heavy industrial complexes.",
+        bulletPoints: [
+          "Turnkey EPC project management from feasibility to commissioning",
+          "Power plant civil infrastructure and township development",
+          "Heavy industrial facilities, processing plants, and global manufacturing complexes",
+        ],
+      },
+    ],
+    capabilities: [
+      "Oil & gas storage terminals, pipelines, and processing facilities",
+      "LNG regasification plants and terminal civil works",
+      "International energy infrastructure and green energy (solar, wind) projects",
+      "EPC project management for global energy markets",
+      "International trading, procurement, and supply chain solutions",
+      "Project management, joint ventures, and market entry across MENA, China, USA, and Europe",
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: "Global Market & Site Feasibility",
+        description:
+          "Evaluating international project sites, regulatory requirements, and market-entry strategies.",
+      },
+      {
+        step: 2,
+        title: "International Partnering & Affiliations",
+        description:
+          "Structuring strategic affiliations with global EPC contractors, technology providers, and local partners.",
+      },
+      {
+        step: 3,
+        title: "EPC Execution for Energy Infrastructure",
+        description:
+          "Turnkey engineering, procurement, and construction across global energy infrastructure and green energy projects.",
+      },
+      {
+        step: 4,
+        title: "Commissioning & Handover",
+        description:
+          "System integration, testing, reliability analysis, and seamless operational handover.",
+      },
+      {
+        step: 5,
+        title: "Lifecycle Support & Global Expansion",
+        description:
+          "Long-term operations, maintenance services, and expansion into new international markets.",
+      },
+    ],
+    standardsCompliance: [
+      "International Energy Standards & Codes",
+      "ISO 9001, ISO 14001, ISO 45001",
+      "United Nations Sustainable Development Goals (SDGs)",
+      "Local DoE & Global Environmental Regulations",
+    ],
+    keyEquipment: [
+      "Heavy Civil & Marine Construction Fleet",
+      "Specialist Energy Infrastructure Machinery",
+      "International Logistics & Supply Chain Networks",
+    ],
+    benefits: [
+      "Backed by 42+ years of combined international experience",
+      "Global network of strategic affiliations and partnerships",
+      "Delivering energy infrastructure to global, national, and industrial clients",
     ],
   },
 ];

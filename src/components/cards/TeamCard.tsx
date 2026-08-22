@@ -1,5 +1,5 @@
 import type { Leader } from "@/content/leadership";
-import { Linkedin, Github, Twitter } from "lucide-react";
+import { GithubLogo, LinkedinLogo, TwitterLogo } from "@/components/ui/BrandIcons";
 
 const avatarImages: Record<string, string> = {
   "nasim-jahan": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80",
@@ -53,25 +53,28 @@ export function TeamCard({ leader }: { leader: Leader }) {
             href="https://www.linkedin.com/in"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white transition-colors"
+            aria-label="LinkedIn profile"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0A66C2] text-white transition-transform hover:scale-110 hover:shadow-md"
           >
-            <Linkedin className="h-5 w-5" />
+            <LinkedinLogo />
           </a>
           <a
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white transition-colors"
+            aria-label="X (Twitter) profile"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white transition-transform hover:scale-110 hover:shadow-md"
           >
-            <Twitter className="h-5 w-5" />
+            <TwitterLogo />
           </a>
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white transition-colors"
+            aria-label="GitHub profile"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#24292e] text-white transition-transform hover:scale-110 hover:shadow-md"
           >
-            <Github className="h-5 w-5" />
+            <GithubLogo />
           </a>
         </div>
       </div>

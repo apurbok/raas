@@ -1,35 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  Building2,
-  ChevronDown,
-  Compass,
-  FileCheck,
-  FolderGit2,
-  HardHat,
-  Menu,
-  Phone,
-  ShieldCheck,
-  Users,
-  X,
-} from "lucide-react";
-import { company, navigation, type NavItem } from "@/content/company";
+import { ChevronDown, Globe2, Menu, X } from "lucide-react";
+import { SiteSearch } from "@/components/layout/SiteSearch";
+import { useLanguage, type LangCode } from "@/components/providers/LanguageProvider";
+import { navigation, type NavItem } from "@/content/company";
 import { cn } from "@/lib/utils";
+
+const languages: { code: LangCode; labelKey: string }[] = [
+  { code: "en", labelKey: "English" },
+  { code: "ar", labelKey: "Saudi Arabia" },
+  { code: "zh", labelKey: "Chinese" },
+];
 
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
+  const { lang, setLang, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [langOpen, setLangOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  const isHome = pathname === "/" || pathname === "";
+  const overlay = isHome && !scrolled && !mobileOpen;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -37,7 +39,19 @@ export function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
+    setLangOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!langOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    window.addEventListener("mousedown", onClick);
+    return () => window.removeEventListener("mousedown", onClick);
+  }, [langOpen]);
 
   const handleMouseEnter = (label: string) => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
@@ -47,113 +61,81 @@ export function Header() {
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
-    }, 180);
+    }, 160);
   };
 
   const toggleMobileAccordion = (label: string) => {
     setMobileExpanded((prev) => ({ ...prev, [label]: !prev[label] }));
   };
 
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.includes("#")) {
-      const [path, hash] = href.split("#");
-      const targetHash = `#${hash}`;
-      const currentPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
-      const expectedPath = path.endsWith("/") ? path : `${path}/`;
+  const linkActive = (href: string, children?: NavItem["children"]) =>
+    pathname === href ||
+    (href !== "/" && pathname.startsWith(href)) ||
+    Boolean(children?.some((c) => pathname.startsWith(c.href.split("#")[0])));
 
-      if (currentPath === expectedPath || (path === "/about/" && pathname.startsWith("/about"))) {
-        e.preventDefault();
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-          window.history.pushState(null, "", targetHash);
-        }
-        setOpenDropdown(null);
-        setMobileOpen(false);
-      }
-    }
-  };
+  const currentLangLabel = t(languages.find((l) => l.code === lang)?.labelKey ?? "English");
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border bg-white/95 shadow-md backdrop-blur-md"
-          : "border-b border-border/50 bg-white",
+        overlay
+          ? "bg-transparent"
+          : "border-b border-border bg-white/95 shadow-md backdrop-blur-md",
       )}
     >
-      {/* Top micro bar */}
-      <div className="border-b border-white/10 bg-primary-dark text-white">
-        <div className="container-wide flex items-center justify-between py-1.5 text-xs sm:text-sm">
-          <div className="flex items-center gap-4">
-            <a
-              href={`tel:${company.phone[0]}`}
-              className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-accent"
-            >
-              <Phone className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent" />
-              <span>{company.phone[0]}</span>
-            </a>
-            <span className="hidden text-white/40 md:inline">|</span>
-            <a
-              href={`mailto:${company.email}`}
-              className="hidden text-white/80 transition-colors hover:text-accent md:inline"
-            >
-              {company.email}
-            </a>
-          </div>
-          <div className="flex items-center gap-3 text-xs">
-            <span className="hidden sm:inline text-white/70">
-              House 482, Mirpur DOHS, Dhaka
-            </span>
-            <Link
-              href="/hse/"
-              className="inline-flex items-center gap-1 rounded bg-white/10 px-2 py-0.5 text-[11px] font-semibold text-accent hover:bg-white/20"
-            >
-              <ShieldCheck className="h-3 w-3" />
-              HES Certified
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation bar */}
-      <div className="container-wide flex h-16 items-center justify-between md:h-20">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-primary text-white font-bold text-lg md:text-xl shadow-inner group-hover:bg-accent transition-colors">
-            R
+      <div className="container-wide flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
+        <Link href="/" className="flex shrink-0 items-center gap-3">
+          <div
+            className={cn(
+              "flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold tracking-[0.12em] shadow-sm",
+              overlay
+                ? "border border-white/50 bg-white/20 text-white"
+                : "bg-gradient-to-br from-primary to-accent text-white",
+            )}
+          >
+            RA
           </div>
           <div className="flex flex-col">
-            <span className="font-heading text-lg font-bold tracking-tight text-primary md:text-xl group-hover:text-accent transition-colors">
+            <span
+              className={cn(
+                "font-heading text-base font-semibold tracking-wide md:text-lg",
+                overlay ? "text-white" : "text-primary",
+              )}
+            >
               RASS Associates
             </span>
-            <span className="hidden text-[11px] font-medium uppercase tracking-wider text-text-muted sm:block">
-              {company.tagline}
+            <span
+              className={cn(
+                "hidden text-[10px] font-medium uppercase tracking-[0.18em] sm:block",
+                overlay ? "text-white/75" : "text-text-muted",
+              )}
+            >
+              Energy · Infrastructure
             </span>
           </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex" aria-label="Main navigation">
-          {navigation.header.map((item: any) => {
-            const hasChildren = item?.children && item.children?.length > 0;
-            const isActive =
-              pathname === item.href ||
-              (item.href !== "/" && pathname.startsWith(item.href)) ||
-              (item.children && item.children.some((c: any) => pathname.startsWith(c.href.split("#")[0])));
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Main navigation">
+          {navigation.header.map((item) => {
+            const children = "children" in item ? item.children : undefined;
+            const hasChildren = Boolean(children && children.length > 0);
+            const isActive = linkActive(item.href, children);
+            const itemClass = cn(
+              "rounded-lg px-2.5 py-2 text-[12px] font-medium tracking-wide transition-colors 2xl:px-3 2xl:text-sm",
+              overlay
+                ? isActive
+                  ? "bg-white/20 text-white"
+                  : "text-white/90 hover:bg-white/15 hover:text-white"
+                : isActive
+                  ? "bg-primary/10 text-primary"
+                  : "text-text hover:bg-surface hover:text-primary",
+            );
 
             if (!hasChildren) {
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "group relative rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
-                    isActive ? "text-accent bg-accent/5 font-bold" : "text-primary/90",
-                  )}
-                >
-                  {item.label}
-                  <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <Link key={item.href} href={item.href} className={itemClass}>
+                  {t(item.label)}
                 </Link>
               );
             }
@@ -167,51 +149,40 @@ export function Header() {
                 onMouseEnter={() => handleMouseEnter(item.label)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button
-                  type="button"
-                  className={cn(
-                    "group relative flex items-center gap-1 rounded-md px-2.5 py-2 text-[13px] xl:text-sm font-semibold transition-all hover:bg-surface hover:text-accent",
-                    isActive || isOpen ? "text-accent bg-accent/5 font-bold" : "text-primary/90",
-                  )}
+                <Link
+                  href={item.href}
+                  className={cn(itemClass, "inline-flex items-center gap-1")}
                   aria-expanded={isOpen}
-                  onClick={() => setOpenDropdown(isOpen ? null : item.label)}
                 >
-                  {item.label}
-                  <ChevronDown
-                    className={cn(
-                      "h-4 w-4 transition-transform duration-200",
-                      isOpen && "rotate-180 text-accent",
-                    )}
-                  />
-                  <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                </button>
+                  {t(item.label)}
+                  <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", isOpen && "rotate-180")} />
+                </Link>
 
-                {/* Dropdown Panel matching ss-1 style */}
                 {isOpen && (
-                  <div className="absolute left-0 top-full pt-1.5 w-72 xl:w-80 animate-in fade-in-50 slide-in-from-top-2 duration-200 z-50">
-                    <div className="rounded-xl border border-primary/20 bg-[#0092db] p-2 shadow-2xl text-white">
-                      <div className="flex flex-col space-y-0.5">
-                        {item.children?.map((subItem: any) => (
+                  <div className="absolute left-0 top-full z-50 pt-2">
+                    <div className="min-w-64 overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-[#1a6fb8] to-[#0f4f8a] py-2 shadow-2xl">
+                      {children?.map((subItem) => {
+                        const featured = "featured" in subItem && subItem.featured;
+                        return (
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            onClick={(e) => handleAnchorClick(e, subItem.href)}
-                            className="group flex flex-col rounded-lg px-3.5 py-2.5 text-sm font-medium transition-all hover:bg-white hover:text-[#0092db]"
+                            className={cn(
+                              "flex items-center justify-between gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/15 hover:text-white",
+                              featured
+                                ? "mx-2 mb-1 rounded-lg bg-white/15 font-semibold text-cyan-200 ring-1 ring-cyan-300/40"
+                                : "text-white/90",
+                            )}
                           >
-                            <span className="font-semibold text-white group-hover:text-[#0092db] flex items-center justify-between">
-                              {subItem.label}
-                              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold">
-                                →
-                              </span>
-                            </span>
-                            {subItem.description && (
-                              <span className="text-xs text-white/80 group-hover:text-text-muted mt-0.5 line-clamp-1">
-                                {subItem.description}
+                            <span>{subItem.label}</span>
+                            {featured && (
+                              <span className="rounded-full bg-cyan-300/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-100">
+                                Special
                               </span>
                             )}
                           </Link>
-                        ))}
-                      </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -220,17 +191,54 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
-        <div className="flex items-center gap-3">
-          <Link
-            href="/contact/"
-            className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-hover hover:shadow active:scale-95 sm:inline-flex"
-          >
-            Get a Quote
-          </Link>
+        <div className="flex items-center gap-1 sm:gap-2">
+          <SiteSearch overlay={overlay} />
+
+          <div className="relative" ref={langRef}>
+            <button
+              type="button"
+              onClick={() => setLangOpen((v) => !v)}
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium transition-colors sm:px-2.5",
+                overlay
+                  ? "text-white/90 hover:bg-white/15 hover:text-white"
+                  : "text-primary hover:bg-surface",
+              )}
+              aria-expanded={langOpen}
+              aria-label={t("Language")}
+            >
+              <Globe2 className="h-3.5 w-3.5" />
+              <span className="hidden max-w-[7rem] truncate sm:inline">{currentLangLabel}</span>
+              <ChevronDown className={cn("h-3 w-3 transition-transform", langOpen && "rotate-180")} />
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full z-50 mt-2 min-w-[11rem] overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-[#1a6fb8] to-[#0f4f8a] py-1.5 shadow-2xl">
+                {languages.map((option) => (
+                  <button
+                    key={option.code}
+                    type="button"
+                    onClick={() => {
+                      setLang(option.code);
+                      setLangOpen(false);
+                    }}
+                    className={cn(
+                      "block w-full px-4 py-2 text-left text-sm text-white/90 transition-colors hover:bg-white/15 hover:text-white",
+                      lang === option.code && "bg-white/15 font-semibold text-white",
+                    )}
+                  >
+                    {t(option.labelKey)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button
             type="button"
-            className="inline-flex rounded-lg p-2 text-primary hover:bg-surface lg:hidden"
+            className={cn(
+              "inline-flex rounded-lg p-2 xl:hidden",
+              overlay ? "text-white hover:bg-white/15" : "text-primary hover:bg-surface",
+            )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -240,10 +248,9 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Accordion Menu */}
       {mobileOpen && (
         <nav
-          className="max-h-[85vh] overflow-y-auto border-t border-border bg-white px-4 py-4 lg:hidden shadow-lg"
+          className="max-h-[85vh] overflow-y-auto border-t border-border bg-white px-4 py-4 xl:hidden"
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-1">
@@ -257,63 +264,53 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "rounded-lg px-3 py-2.5 text-base font-semibold transition-colors hover:bg-surface",
-                      pathname === item.href ? "text-accent bg-accent/10" : "text-primary",
-                    )}
+                    className="rounded-lg px-3 py-3 text-sm font-medium text-primary"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 );
               }
 
               return (
-                <div key={item.label} className="rounded-lg border border-border/60 bg-surface/50">
+                <div key={item.label} className="border-b border-border">
                   <button
                     type="button"
                     onClick={() => toggleMobileAccordion(item.label)}
-                    className="flex w-full items-center justify-between px-3 py-2.5 text-base font-semibold text-primary"
+                    className="flex w-full items-center justify-between px-3 py-3 text-sm font-medium text-primary"
                   >
-                    <span>{item.label}</span>
-                    <ChevronDown
-                      className={cn(
-                        "h-4 w-4 text-text-muted transition-transform duration-200",
-                        isExpanded && "rotate-180 text-accent",
-                      )}
-                    />
+                    <span>{t(item.label)}</span>
+                    <ChevronDown className={cn("h-4 w-4", isExpanded && "rotate-180")} />
                   </button>
-
                   {isExpanded && (
-                    <div className="border-t border-border/40 bg-white px-2 py-2 flex flex-col space-y-1">
-                      {item.children?.map((subItem) => (
-                        <Link
-                          key={subItem.href}
-                          href={subItem.href}
-                          onClick={(e) => {
-                            handleAnchorClick(e, subItem.href);
-                            setMobileOpen(false);
-                          }}
-                          className="rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-accent/10 hover:text-accent"
-                        >
-                          <div className="font-semibold">{subItem.label}</div>
-                          {subItem.description && (
-                            <div className="text-xs text-text-muted">{subItem.description}</div>
-                          )}
-                        </Link>
-                      ))}
+                    <div className="flex flex-col pb-2">
+                      {item.children?.map((subItem) => {
+                        const featured = "featured" in subItem && subItem.featured;
+                        return (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            onClick={() => setMobileOpen(false)}
+                            className={cn(
+                              "mx-2 flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm",
+                              featured
+                                ? "bg-primary/10 font-semibold text-primary"
+                                : "text-text-muted",
+                            )}
+                          >
+                            <span>{subItem.label}</span>
+                            {featured && (
+                              <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
+                                Special
+                              </span>
+                            )}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
               );
             })}
-
-            <Link
-              href="/contact/"
-              onClick={() => setMobileOpen(false)}
-              className="mt-3 rounded-lg bg-accent px-4 py-3 text-center text-sm font-bold text-white shadow-md hover:bg-accent-hover"
-            >
-              Get a Quote / Contact Us
-            </Link>
           </div>
         </nav>
       )}

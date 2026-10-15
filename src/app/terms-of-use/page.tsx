@@ -73,7 +73,7 @@ export default function TermsOfUsePage() {
                 <div className="flex shrink-0 gap-3">
                   <Link
                     href="/contact/"
-                    className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+                    className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
                   >
                     <Mail className="h-4 w-4" />
                     Contact Office

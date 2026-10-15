@@ -1,19 +1,55 @@
-export function SisterConcernFlipCard({ concern }: { concern: any }) {
+import Link from "next/link";
+import type { SisterConcern } from "@/content/policies";
+
+const concernVisuals: Record<string, { initials: string; gradient: string }> = {
+  "rass-resort": {
+    initials: "RR",
+    gradient: "from-emerald-500 to-teal-600",
+  },
+  "nrl-eco-bricks": {
+    initials: "NRL",
+    gradient: "from-lime-500 to-green-700",
+  },
+  "orbed-green-energy": {
+    initials: "OG",
+    gradient: "from-sky-500 to-cyan-600",
+  },
+};
+
+export function SisterConcernFlipCard({ concern }: { concern: SisterConcern }) {
+  const visual = concernVisuals[concern.slug] ?? {
+    initials: concern.name.slice(0, 2).toUpperCase(),
+    gradient: "from-primary to-accent",
+  };
+
   return (
-    <div className="relative h-64 w-52 rounded-2xl overflow-hidden group-hover:translate-y-[-4px] group-hover:shadow-2xl transition-all duration-500">
-      <div className="aspect-[4/3] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1581094782123-898b9e5ba7e5?w=800&h=600&fit=crop"
-          alt={concern.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/20 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-white/30">
+    <div className="flip-card h-72 w-full" tabIndex={0}>
+      <div className="flip-card-inner">
+        <div
+          className={`flip-card-face flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br ${visual.gradient} p-6 text-center text-white shadow-lg`}
+        >
+          <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-2 border-white/40 bg-white/15 text-2xl font-bold tracking-wide backdrop-blur-sm">
+            {visual.initials}
+          </div>
+          <h3 className="text-xl font-semibold leading-snug">{concern.name}</h3>
+          <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/80">{concern.category}</p>
+          <p className="mt-6 text-[11px] font-medium text-white/70">Hover to explore</p>
+        </div>
+
+        <div className="flip-card-back flip-card-face flex flex-col rounded-2xl border border-border bg-white p-6 shadow-lg">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             {concern.category}
-          </span>
-          <h3 className="mt-2 text-xl font-semibold text-white">{concern.name}</h3>
-          <p className="mt-1 text-sm text-white/80">{concern.description}</p>
+          </p>
+          <h3 className="mb-3 text-lg font-semibold text-primary">{concern.tagline}</h3>
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-text-muted line-clamp-5">
+            {concern.description}
+          </p>
+          <Link
+            href={`/sister-concerns/#${concern.slug}`}
+            className="text-sm font-semibold text-primary hover:text-accent"
+          >
+            Learn more →
+          </Link>
         </div>
       </div>
     </div>

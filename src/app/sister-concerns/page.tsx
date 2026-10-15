@@ -86,7 +86,7 @@ export default function SisterConcernsPage() {
                       href={company.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-accent-hover transition-colors"
+                      className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-primary-dark transition-colors"
                     >
                       Visit Website
                       <ExternalLink className="h-4 w-4" />
@@ -145,8 +145,9 @@ export default function SisterConcernsPage() {
               const concernImage = concernImages[concern.slug] || "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1200&h=375&fit=crop&q=80";
               return (
                 <article
+                  id={concern.slug}
                   key={concern.slug}
-                  className="rounded-3xl border border-border bg-white shadow-sm transition-all hover:shadow-lg hover:border-accent/40 overflow-hidden"
+                  className="scroll-mt-28 rounded-3xl border border-border bg-white shadow-sm transition-all hover:shadow-lg hover:border-accent/40 overflow-hidden"
                 >
                   <div className="relative aspect-[16/5]">
                     <img
@@ -181,7 +182,7 @@ export default function SisterConcernsPage() {
                         href={concern.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-accent-hover transition-colors"
+                        className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-primary-dark transition-colors"
                       >
                         Visit Website
                         <ExternalLink className="h-4 w-4" />

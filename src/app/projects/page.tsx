@@ -24,7 +24,7 @@ export default function ProjectsPage() {
     if (activeFilter === "completed" || activeFilter === "ongoing") {
       return projects.filter((p) => p.status === (activeFilter as ProjectStatus));
     }
-    return projects.filter((p) => p.sector === activeFilter);
+    return projects.filter((p) => p.sector.toLowerCase().includes(activeFilter.toLowerCase()));
   }, [activeFilter]);
 
   return (
@@ -43,10 +43,11 @@ export default function ProjectsPage() {
                 key={filter.value}
                 type="button"
                 onClick={() => setActiveFilter(filter.value)}
+                aria-pressed={activeFilter === filter.value}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  "cursor-filter rounded-full px-4 py-2 text-sm font-medium transition-all",
                   activeFilter === filter.value
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-white shadow-md"
                     : "bg-surface text-text-muted hover:bg-surface-dark",
                 )}
               >

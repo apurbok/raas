@@ -52,9 +52,9 @@ export default function EquipmentPage() {
   return (
     <>
       <PageHeader
-        title="Resources and Equipment"
-        description="Comprehensive in-house heavy machinery fleet, automated concrete batching plants, and specialized cutter suction dredging assets."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Resources and Equipment" }]}
+        title="Resources and Equipments"
+        description="In-house heavy machinery, concrete batching, and cutter suction dredging assets."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Resources and Equipments" }]}
       />
 
       {/* Fleet Overview Stats */}
@@ -310,7 +310,7 @@ export default function EquipmentPage() {
             <div className="text-right md:text-right">
               <Link
                 href="/contact/"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-bold text-white shadow-md hover:bg-accent-hover transition-colors w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors w-full sm:w-auto"
               >
                 Inquire for Fleet Mobilization
                 <ArrowRight className="h-4 w-4" />

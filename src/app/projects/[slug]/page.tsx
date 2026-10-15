@@ -287,7 +287,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </p>
                 <Link
                   href="/contact/"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-3 font-bold text-white shadow-md hover:bg-accent-hover transition-colors"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
                 >
                   Contact Our Engineering Team
                   <ArrowRight className="h-4 w-4" />
@@ -304,7 +304,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                       href={`/projects/${p.slug}/`}
                       className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
                         p.slug === slug
-                          ? "bg-accent text-white font-bold"
+                          ? "bg-primary text-white font-bold"
                           : "text-text hover:bg-surface hover:text-accent"
                       }`}
                     >

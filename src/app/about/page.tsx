@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Award, CheckCircle2, Compass, ShieldCheck, Target, Users } from "lucide-react";
-import { Container, PageHeader, Section } from "@/components/ui/Section";
+import { ArrowRight, Award, CheckCircle2, Compass, ShieldCheck, Target } from "lucide-react";
+import { Container, PageHeader } from "@/components/ui/Section";
 import { ScrollReveal, StaggerContainer } from "@/components/ui/ScrollReveal";
 import { WordReveal } from "@/components/ui/AnimatedText";
 import { company, values } from "@/content/company";
+import { mdMessage } from "@/content/leadership";
 
 export const metadata: Metadata = {
   title: "About Us | RASS Associates Ltd",
@@ -121,88 +122,122 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="bg-surface py-16 md:py-24 border-y border-border">
+      {/* Message from the Managing Director */}
+      <section className="border-y border-border bg-surface py-16 md:py-24">
         <Container>
-          <StaggerContainer className="grid gap-10 md:grid-cols-2" staggerMs={150}>
-            {/* Our Mission */}
-            <div
-              id="mission"
-              className="scroll-mt-28 rounded-2xl bg-white p-8 md:p-10 shadow-sm border border-border flex flex-col justify-between"
-            >
-              <div className="overflow-hidden rounded-xl mb-6">
-                <div className="relative aspect-[16/9]">
-                  <img
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=450&fit=crop&q=80"
-                    alt="Engineering and construction mission"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+          <ScrollReveal variant="fade-up">
+            <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+              <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
+                <div className="relative mx-auto w-full max-w-xs overflow-hidden lg:mx-0 lg:max-w-[20rem]">
+                  <div className="relative aspect-[3/4] w-full">
+                    <img
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&q=80"
+                      alt={mdMessage.author}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-6">
+                      <p className="font-heading text-lg font-semibold">{mdMessage.author}</p>
+                      <p className="text-sm text-white/85">
+                        {mdMessage.title}, {company.name}
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
+                <div className="flex min-w-0 flex-col justify-center px-6 py-8 sm:px-8 md:px-10 lg:py-10">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                    Message from the Managing Director
+                  </p>
+                  <h2 className="mb-6 font-heading text-2xl font-semibold text-primary md:text-3xl">
+                    {mdMessage.author}
+                  </h2>
+                  <div className="space-y-4 text-sm leading-relaxed text-text-muted sm:text-base">
+                    {mdMessage.content.split("\n\n").map((paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <Link
+                      href="/leadership/"
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+                    >
+                      Meet our leadership
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Mission & Vision — floating imagery */}
+      <section className="overflow-hidden bg-white py-16 md:py-24 border-b border-border">
+        <Container>
+          <div className="grid gap-16">
+            <div id="mission" className="scroll-mt-28 grid items-center gap-10 lg:grid-cols-2">
+              <div className="relative mx-auto w-full max-w-md">
+                <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl" />
+                <img
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop&q=80"
+                  alt="Engineering and construction mission"
+                  className="animate-float-soft relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-white"
+                  loading="lazy"
+                />
               </div>
               <div>
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Target className="h-6 w-6 text-primary" />
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-md">
+                  <Target className="h-6 w-6" />
                 </div>
-                <h2 className="mb-4 text-2xl font-bold text-primary">Our Mission</h2>
-                <p className="text-base text-text-muted leading-relaxed mb-4">
-                  Our mission at RASS Associates Ltd is to be the preferred international engineering, energy,
-                  and industrial solutions partner, delivering blended expertise across oil & gas, green
-                  energy, industrial solutions, project management, and trading. We achieve this through strategic
-                  affiliations with global partners, fostering a culture of collaboration and mutual support
-                  among our professionals, clients, and international partners.
+                <h2 className="mb-4 text-3xl font-bold text-primary">Our Mission</h2>
+                <p className="mb-4 text-base leading-relaxed text-text-muted">
+                  To be the preferred international engineering, energy, and industrial solutions partner —
+                  delivering oil &amp; gas, green energy, industrial solutions, project management, and trading
+                  through strategic global affiliations and a culture of collaboration.
                 </p>
-                <p className="text-base text-text-muted leading-relaxed">
-                  We prioritize innovation in every phase of our work, from design to execution, ensuring that
-                  our solutions are always ahead of industry trends. Above all, we emphasize safety and
-                  sustainability in every aspect of our operations. Our mission is not only to meet the immediate
-                  needs of our clients but to build enduring relationships based on trust, reliability, and
-                  exceptional performance across the Middle East, China, USA, and other international markets.
+                <p className="text-base leading-relaxed text-text-muted">
+                  We prioritize innovation, safety, and sustainability in every phase — building enduring
+                  relationships based on trust and exceptional performance across international markets.
                 </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-border/60 text-xs font-semibold text-accent uppercase tracking-wider">
-                Delivering Excellence &bull; Building Trust
+                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-accent">
+                  Delivering Excellence · Building Trust
+                </p>
               </div>
             </div>
 
-            {/* Our Vision */}
-            <div
-              id="vision"
-              className="scroll-mt-28 rounded-2xl bg-white p-8 md:p-10 shadow-sm border border-border flex flex-col justify-between"
-            >
-              <div className="overflow-hidden rounded-xl mb-6">
-                <div className="relative aspect-[16/9]">
-                  <img
-                    src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop&q=80"
-                    alt="Renewable energy and sustainable vision"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+            <div id="vision" className="scroll-mt-28 grid items-center gap-10 lg:grid-cols-2">
+              <div className="order-2 lg:order-1">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-accent to-secondary text-white shadow-md">
+                  <Compass className="h-6 w-6" />
                 </div>
-              </div>
-              <div>
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <Compass className="h-6 w-6 text-accent" />
-                </div>
-                <h2 className="mb-4 text-2xl font-bold text-primary">Our Vision</h2>
-                <p className="text-base text-text-muted leading-relaxed mb-4">
-                  Our vision is to be the market leader in international engineering, energy, and industrial
-                  solutions, with strong positioning across the Middle East, China, USA, and other global
-                  markets. We aim to be recognized not just for our excellence in project execution but also
-                  for our commitment to sustainability, innovation, and client satisfaction through strategic
-                  international partnerships.
+                <h2 className="mb-4 text-3xl font-bold text-primary">Our Vision</h2>
+                <p className="mb-4 text-base leading-relaxed text-text-muted">
+                  To lead international engineering, energy, and industrial solutions across the Middle East,
+                  China, USA, and other global markets — recognized for execution excellence, sustainability,
+                  and client satisfaction.
                 </p>
-                <p className="text-base text-text-muted leading-relaxed">
-                  By aligning our engineering capabilities with global development initiatives and investing in
-                  state-of-the-art construction, dredging, and energy technologies, we aim to shape the modern
-                  infrastructural landscape across international markets for generations to come.
+                <p className="text-base leading-relaxed text-text-muted">
+                  By investing in modern construction, dredging, and energy technologies, we aim to shape the
+                  infrastructural landscape for generations to come.
+                </p>
+                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Market Leadership · Sustainable Future
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-border/60 text-xs font-semibold text-primary uppercase tracking-wider">
-                Market Leadership &bull; Sustainable Future
+              <div className="relative order-1 mx-auto w-full max-w-md lg:order-2">
+                <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent/25 to-primary/15 blur-2xl" />
+                <img
+                  src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop&q=80"
+                  alt="Renewable energy and sustainable vision"
+                  className="animate-float-soft-alt relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-white"
+                  loading="lazy"
+                />
               </div>
             </div>
-          </StaggerContainer>
+          </div>
         </Container>
       </section>
 
@@ -235,7 +270,7 @@ export default function AboutPage() {
                 className="group rounded-xl border border-border bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md"
               >
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary group-hover:bg-accent group-hover:text-white transition-colors">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     0{i + 1}
                   </span>
                   <CheckCircle2 className="h-5 w-5 text-secondary" />

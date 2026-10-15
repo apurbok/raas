@@ -60,7 +60,7 @@ export default function OilGasPage() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/contact/"
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white shadow-md hover:bg-accent-hover transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
                 >
                   Discuss Your Project
                   <ArrowRight className="h-4 w-4" />
@@ -233,7 +233,7 @@ export default function OilGasPage() {
             </div>
             <Link
               href="/contact/"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-accent px-8 py-4 font-bold text-white shadow-lg hover:bg-accent-hover transition-colors"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
             >
               Contact Our Energy Division
               <ArrowRight className="h-5 w-5" />

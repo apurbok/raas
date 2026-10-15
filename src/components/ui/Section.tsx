@@ -53,16 +53,14 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <WordReveal
-        text={title}
-        as="h2"
+      <h2
         className={cn(
-          "mb-8 text-3xl font-bold md:text-4xl",
+          "mb-4 text-3xl font-bold md:text-4xl",
           light ? "text-white" : "text-primary",
         )}
-        staggerMs={60}
-        duration={600}
-      />
+      >
+        {title}
+      </h2>
       {description && (
         <p
           className={cn(
@@ -88,8 +86,8 @@ export function PageHeader({
   breadcrumbs?: { label: string; href?: string }[];
 }) {
   return (
-    <div className="border-b border-border bg-surface">
-      <Container className="py-12 md:py-16">
+    <div className="border-b border-border bg-gradient-to-br from-surface via-white to-surface-dark">
+      <Container className="py-14 md:py-20">
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-text-muted" aria-label="Breadcrumb">
             {breadcrumbs.map((crumb, i) => (
@@ -106,17 +104,9 @@ export function PageHeader({
             ))}
           </nav>
         )}
-        <WordReveal
-          text={title}
-          as="h1"
-          className="mb-8 text-4xl font-bold text-primary md:text-5xl"
-          staggerMs={50}
-          duration={600}
-        />
+        <h1 className="mb-4 font-heading text-4xl font-semibold text-primary md:text-5xl">{title}</h1>
         {description && (
-          <p className="max-w-3xl text-lg text-text-muted animate-fade-up" style={{ animationDelay: "300ms", animationDuration: "700ms" }}>
-            {description}
-          </p>
+          <p className="max-w-3xl text-lg text-text-muted">{description}</p>
         )}
       </Container>
     </div>
@@ -152,7 +142,7 @@ export function CTABanner({
           </div>
           <Link
             href={href}
-            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-accent px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-hover"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
           >
             {buttonText}
             <ArrowRight className="h-4 w-4" />

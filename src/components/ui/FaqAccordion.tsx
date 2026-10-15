@@ -20,10 +20,8 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
           <div
             key={item.q}
             className={cn(
-              "overflow-hidden rounded-2xl border bg-white transition-all duration-300",
-              isOpen
-                ? "border-primary/30 shadow-[0_12px_30px_rgba(21,101,168,0.12)]"
-                : "border-border hover:border-accent/40",
+              "paper-card overflow-hidden rounded-2xl transition-all duration-300",
+              isOpen && "shadow-[inset_6px_6px_12px_#c5cedd,inset_-6px_-6px_12px_#fff]",
             )}
           >
             <button

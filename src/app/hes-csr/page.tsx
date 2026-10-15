@@ -20,7 +20,7 @@ export default function HesCsrPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "HES & CSR" }]}
       />
 
-      <Section id="hes" className="scroll-mt-24">
+      <Section id="hes" className="scroll-mt-24 bg-paper">
         <Container>
           <ScrollReveal variant="fade-up">
             <div className="mb-10 flex items-center gap-3">
@@ -36,10 +36,9 @@ export default function HesCsrPage() {
             {hsePolicy.commitments.map((commitment) => (
               <article
                 key={commitment.title}
-                className="card-trace relative overflow-hidden rounded-2xl bg-white p-6 md:p-8"
+                className="card-trace paper-card relative overflow-hidden rounded-2xl p-6 md:p-8"
               >
                 <CardTraceBorder />
-                <span className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent/10" />
                 <p className="relative mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
                   {commitment.subtitle}
                 </p>
@@ -63,7 +62,7 @@ export default function HesCsrPage() {
         </Container>
       </Section>
 
-      <Section id="csr" className="scroll-mt-24 bg-surface">
+      <Section id="csr" className="scroll-mt-24 bg-paper">
         <Container>
           <ScrollReveal variant="fade-up">
             <div className="mb-10 flex items-center gap-3">
@@ -79,10 +78,9 @@ export default function HesCsrPage() {
             {csrPolicy.sections.map((section) => (
               <article
                 key={section.title}
-                className="card-trace relative overflow-hidden rounded-2xl bg-white p-6"
+                className="card-trace paper-card relative overflow-hidden rounded-2xl p-6"
               >
                 <CardTraceBorder />
-                <span className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-primary/10" />
                 <h3 className="relative mb-3 text-lg font-semibold text-primary">{section.title}</h3>
                 <p className="relative text-sm leading-relaxed text-text-muted">{section.content}</p>
               </article>

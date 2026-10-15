@@ -70,10 +70,10 @@ export function SiteSearch({ overlay }: { overlay?: boolean }) {
             role="dialog"
             aria-modal="true"
             aria-label={t("Search")}
-            className="w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-white shadow-2xl"
+            className="paper-card w-full max-w-lg overflow-hidden rounded-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+            <div className="mx-3 mt-3 flex items-center gap-2 rounded-xl px-3 py-2.5 shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]">
               <Search className="h-4 w-4 shrink-0 text-text-muted" />
               <input
                 ref={inputRef}
@@ -85,7 +85,7 @@ export function SiteSearch({ overlay }: { overlay?: boolean }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-md p-1 text-text-muted hover:bg-surface hover:text-primary"
+                className="rounded-md p-1 text-text-muted hover:text-primary"
                 aria-label="Close search"
               >
                 <X className="h-4 w-4" />
@@ -103,7 +103,7 @@ export function SiteSearch({ overlay }: { overlay?: boolean }) {
                         setOpen(false);
                         setQuery("");
                       }}
-                      className="block px-4 py-2.5 text-sm text-primary transition-colors hover:bg-surface"
+                      className="mx-2 block rounded-lg px-3 py-2.5 text-sm text-primary transition-shadow hover:shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]"
                     >
                       {t(item.title) !== item.title ? t(item.title) : item.title}
                     </Link>

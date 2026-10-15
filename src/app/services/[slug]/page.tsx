@@ -77,7 +77,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Service Hero Image */}
       <Section className="py-0">
         <Container>
-          <div className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
+          <div className="paper-card relative overflow-hidden rounded-2xl">
             <div className="relative aspect-[21/7]">
               <img
                 src={serviceHeroImages[slug] || "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=530&fit=crop&q=80"}
@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section className="py-16 md:py-24">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Main Content (8 cols) */}
@@ -144,7 +144,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     {service.sections.map((section) => (
                       <div
                         key={section.heading}
-                        className="rounded-2xl border border-border bg-surface/50 p-6 md:p-8"
+                        className="paper-card rounded-2xl p-6 md:p-8"
                       >
                         <h4 className="text-xl font-bold text-primary mb-3">
                           {section.heading}
@@ -182,9 +182,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                     {service.methodology.map((m) => (
                       <div
                         key={m.step}
-                        className="flex items-start gap-4 rounded-xl border border-border bg-white p-5 shadow-sm transition-all hover:border-accent/40"
+                        className="paper-card flex items-start gap-4 rounded-xl p-5 transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
                       >
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-base font-bold text-white shadow-sm">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-paper text-base font-bold text-primary shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                           0{m.step}
                         </span>
                         <div>
@@ -206,7 +206,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {service.capabilities.map((cap) => (
                     <div
                       key={cap}
-                      className="flex items-start gap-3 rounded-lg border border-border bg-white p-4 text-sm text-text"
+                      className="paper-card flex items-start gap-3 rounded-lg p-4 text-sm text-text"
                     >
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
                       <span>{cap}</span>
@@ -226,7 +226,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     {service.standardsCompliance.map((std) => (
                       <span
                         key={std}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-surface border border-border px-3.5 py-1.5 text-xs font-semibold text-primary"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-paper px-3.5 py-1.5 text-xs font-semibold text-primary shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]"
                       >
                         <Award className="h-3.5 w-3.5 text-accent" />
                         {std}
@@ -240,16 +240,16 @@ export default async function ServiceDetailPage({ params }: Props) {
             {/* Sidebar (4 cols) */}
             <div className="lg:col-span-4 space-y-6">
               {/* Quick Consultation Card */}
-              <div className="rounded-2xl border border-primary/20 bg-primary-dark p-7 text-white shadow-xl">
-                <h3 className="text-xl font-bold mb-2">Request Consultation</h3>
-                <p className="text-sm text-white/80 leading-relaxed mb-6">
+              <div className="paper-card rounded-2xl p-7">
+                <h3 className="text-xl font-bold text-primary mb-2">Request Consultation</h3>
+                <p className="text-sm text-text-muted leading-relaxed mb-6">
                   Discuss your {service.title.toLowerCase()} requirements, tender specifications, or site
                   feasibility with our senior engineering team.
                 </p>
                 <div className="space-y-3 mb-6">
                   <a
                     href={`tel:${company.phone[0]}`}
-                    className="flex items-center gap-3 rounded-lg bg-white/10 p-3 text-xs font-semibold hover:bg-white/20 transition-colors"
+                    className="flex items-center gap-3 rounded-lg bg-paper p-3 text-xs font-semibold text-primary shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff] transition-shadow hover:shadow-[inset_5px_5px_10px_#c5cedd,inset_-5px_-5px_10px_#fff]"
                   >
                     <Phone className="h-4 w-4 text-accent" />
                     <span>{company.phone[0]}</span>
@@ -257,7 +257,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </div>
                 <Link
                   href="/contact/"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
+                  className="neo-btn-primary w-full py-3 text-sm"
                 >
                   Get a Proposal
                   <ArrowRight className="h-4 w-4" />
@@ -266,7 +266,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
               {/* Key Equipment Deployed */}
               {service.keyEquipment && (
-                <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <div className="paper-card rounded-2xl p-6">
                   <h4 className="text-base font-bold text-primary mb-3 flex items-center gap-2">
                     <Wrench className="h-4 w-4 text-accent" />
                     Key Equipment Fleet Deployed
@@ -290,7 +290,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
               {/* Why Choose RASS */}
               {service.benefits && (
-                <div className="rounded-2xl border border-border bg-surface p-6">
+                <div className="paper-card rounded-2xl p-6">
                   <h4 className="text-base font-bold text-primary mb-3">Why Choose RASS?</h4>
                   <ul className="space-y-2.5">
                     {service.benefits.map((b) => (
@@ -304,17 +304,17 @@ export default async function ServiceDetailPage({ params }: Props) {
               )}
 
               {/* All Services Quick Navigation */}
-              <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+              <div className="paper-card rounded-2xl p-6">
                 <h4 className="text-base font-bold text-primary mb-3">All Services</h4>
                 <div className="flex flex-col space-y-1">
                   {services.map((s) => (
                     <Link
                       key={s.slug}
                       href={s.href || `/services/${s.slug}/`}
-                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
+                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-all ${
                         s.slug === slug
-                          ? "bg-primary text-white font-bold"
-                          : "text-text hover:bg-surface hover:text-accent"
+                          ? "bg-paper font-bold text-primary shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                          : "text-text hover:bg-paper/60 hover:text-accent"
                       }`}
                     >
                       <span>{s.title}</span>
@@ -330,7 +330,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
-        <Section className="bg-surface py-16 border-t border-border">
+        <Section className="bg-paper py-16">
           <Container>
             <div className="flex items-center justify-between mb-8">
               <div>

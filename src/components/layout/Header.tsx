@@ -81,7 +81,7 @@ export function Header() {
         "sticky top-0 z-50 transition-all duration-300",
         overlay
           ? "bg-transparent"
-          : "border-b border-border bg-white/95 shadow-md backdrop-blur-md",
+          : "border-b border-black/5 bg-paper/95 shadow-[0_8px_20px_#c5cedd66] backdrop-blur-md",
       )}
     >
       <div className="container-wide flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
@@ -250,7 +250,7 @@ export function Header() {
 
       {mobileOpen && (
         <nav
-          className="max-h-[85vh] overflow-y-auto border-t border-border bg-white px-4 py-4 xl:hidden"
+          className="max-h-[85vh] overflow-y-auto border-t border-black/5 bg-paper px-4 py-4 xl:hidden"
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-1">

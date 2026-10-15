@@ -86,7 +86,7 @@ export function PageHeader({
   breadcrumbs?: { label: string; href?: string }[];
 }) {
   return (
-    <div className="border-b border-border bg-gradient-to-br from-surface via-white to-surface-dark">
+    <div className="border-b border-black/5 bg-paper">
       <Container className="py-14 md:py-20">
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm text-text-muted" aria-label="Breadcrumb">
@@ -142,7 +142,7 @@ export function CTABanner({
           </div>
           <Link
             href={href}
-            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+            className="neo-btn-primary shrink-0 px-7 py-3 text-sm"
           >
             {buttonText}
             <ArrowRight className="h-4 w-4" />

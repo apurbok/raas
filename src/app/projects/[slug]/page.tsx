@@ -66,7 +66,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* Project Hero Image */}
       <Section className="py-0">
         <Container>
-          <div className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
+          <div className="paper-card relative overflow-hidden rounded-2xl">
             <div className="relative aspect-[21/7]">
               <img
                 src={project.image}
@@ -88,7 +88,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section className="py-16 md:py-24">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           {/* Back link and metadata badges */}
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -109,10 +109,10 @@ export default async function ProjectDetailPage({ params }: Props) {
               >
                 {project.status}
               </span>
-              <span className="rounded-full bg-surface border border-border px-3 py-1 text-xs font-semibold text-primary">
+              <span className="rounded-full bg-paper px-3 py-1 text-xs font-semibold text-primary shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]">
                 {project.sector}
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-surface border border-border px-3 py-1 text-xs font-medium text-text-muted">
+              <span className="inline-flex items-center gap-1 rounded-full bg-paper px-3 py-1 text-xs font-medium text-text-muted shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]">
                 <MapPin className="h-3 w-3 text-accent" />
                 {project.location.split(",")[0]}
               </span>
@@ -204,7 +204,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   {project.deliverables.map((item) => (
                     <div
                       key={item}
-                      className="flex items-start gap-3.5 rounded-xl border border-border bg-surface/50 p-4 transition-all hover:bg-white hover:shadow-sm"
+                      className="paper-card flex items-start gap-3.5 rounded-xl p-4 transition-all hover:shadow-[10px_10px_20px_#c5cedd,-10px_-10px_20px_#fff]"
                     >
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />
                       <span className="text-sm sm:text-base font-medium text-text leading-relaxed">
@@ -226,7 +226,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     {project.equipmentDeployed.map((eq) => (
                       <span
                         key={eq}
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-surface border border-border px-3.5 py-2 text-xs font-semibold text-primary"
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-paper px-3.5 py-2 text-xs font-semibold text-primary shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]"
                       >
                         <Cpu className="h-3.5 w-3.5 text-accent" />
                         {eq}
@@ -240,8 +240,8 @@ export default async function ProjectDetailPage({ params }: Props) {
             {/* Right Sidebar (4 cols) */}
             <div className="lg:col-span-4 space-y-6">
               {/* Project Metadata Card */}
-              <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm space-y-4">
-                <h4 className="text-lg font-bold text-primary border-b border-border pb-3">
+              <div className="paper-card space-y-4 rounded-2xl p-6">
+                <h4 className="text-lg font-bold text-primary border-b border-black/5 pb-3">
                   Project Specifications
                 </h4>
 
@@ -279,15 +279,15 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
 
               {/* Consultation Card */}
-              <div className="rounded-2xl border border-primary/20 bg-primary-dark p-7 text-white shadow-xl">
-                <h3 className="text-xl font-bold mb-2">Partner With Us</h3>
-                <p className="text-sm text-white/80 leading-relaxed mb-6">
+              <div className="paper-card rounded-2xl p-7">
+                <h3 className="text-xl font-bold text-primary mb-2">Partner With Us</h3>
+                <p className="text-sm text-text-muted leading-relaxed mb-6">
                   Looking for a proven EPC partner for mega civil construction, power generation, or
                   dredging infrastructure?
                 </p>
                 <Link
                   href="/contact/"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
+                  className="neo-btn-primary w-full py-3 text-sm"
                 >
                   Contact Our Engineering Team
                   <ArrowRight className="h-4 w-4" />
@@ -295,17 +295,17 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
 
               {/* All Projects Quick Links */}
-              <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+              <div className="paper-card rounded-2xl p-6">
                 <h4 className="text-base font-bold text-primary mb-3">All Projects</h4>
                 <div className="flex flex-col space-y-1">
                   {projects.map((p) => (
                     <Link
                       key={p.slug}
                       href={`/projects/${p.slug}/`}
-                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
+                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-all ${
                         p.slug === slug
-                          ? "bg-primary text-white font-bold"
-                          : "text-text hover:bg-surface hover:text-accent"
+                          ? "bg-paper font-bold text-primary shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                          : "text-text hover:bg-paper/60 hover:text-accent"
                       }`}
                     >
                       <span className="line-clamp-1">{p.title}</span>
@@ -322,7 +322,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             {prevProject ? (
               <Link
                 href={`/projects/${prevProject.slug}/`}
-                className="group flex flex-col p-5 rounded-xl border border-border bg-surface hover:bg-white hover:border-accent/40 transition-all text-left"
+                className="paper-card group flex flex-col rounded-xl p-5 text-left transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
               >
                 <span className="text-xs font-bold text-text-muted group-hover:text-accent flex items-center gap-1 mb-1">
                   &larr; Previous Project
@@ -338,7 +338,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             {nextProject ? (
               <Link
                 href={`/projects/${nextProject.slug}/`}
-                className="group flex flex-col p-5 rounded-xl border border-border bg-surface hover:bg-white hover:border-accent/40 transition-all text-right sm:text-right"
+                className="paper-card group flex flex-col rounded-xl p-5 text-right transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff] sm:text-right"
               >
                 <span className="text-xs font-bold text-text-muted group-hover:text-accent flex items-center justify-end gap-1 mb-1">
                   Next Project &rarr;

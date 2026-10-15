@@ -21,7 +21,7 @@ export default function ServicesPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
-      <Section>
+      <Section className="bg-paper">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {oilGas && <ServiceCard service={oilGas} featured />}

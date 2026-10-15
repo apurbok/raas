@@ -22,7 +22,7 @@ export default function AboutPage() {
       />
 
       {/* Who We Are Section */}
-      <section id="who-we-are" className="scroll-mt-28 py-16 md:py-24">
+      <section id="who-we-are" className="scroll-mt-28 bg-paper py-16 md:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 items-center">
             <div className="lg:col-span-7">
@@ -62,14 +62,14 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/oil-gas/"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary-dark"
+                  className="neo-btn-primary px-5 py-2.5 text-sm"
                 >
                   <Compass className="h-4 w-4" />
                   Explore Oil & Gas Capabilities
                 </Link>
                 <Link
                   href="/projects/"
-                  className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-surface"
+                  className="neo-btn px-5 py-2.5 text-sm"
                 >
                   Explore Completed Projects
                   <ArrowRight className="h-4 w-4" />
@@ -80,7 +80,7 @@ export default function AboutPage() {
 
             <ScrollReveal variant="slide-right" delay={200} className="lg:col-span-5">
               <div className="space-y-6">
-                <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
+                <div className="paper-card overflow-hidden rounded-2xl">
                   <div className="relative aspect-[16/10]">
                     <img
                       src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=500&fit=crop&q=80"
@@ -91,7 +91,7 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                 </div>
-                <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm">
+                <div className="paper-card rounded-2xl p-8">
                   <h3 className="mb-4 text-xl font-bold text-primary flex items-center gap-2">
                     <Award className="h-5 w-5 text-accent" />
                     Our Commitment
@@ -123,10 +123,10 @@ export default function AboutPage() {
       </section>
 
       {/* Message from the Managing Director */}
-      <section className="border-y border-border bg-surface py-16 md:py-24">
+      <section className="bg-paper py-16 md:py-24">
         <Container>
           <ScrollReveal variant="fade-up">
-            <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+            <div className="paper-card overflow-hidden rounded-2xl">
               <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
                 <div className="relative mx-auto w-full max-w-xs overflow-hidden lg:mx-0 lg:max-w-[20rem]">
                   <div className="relative aspect-[3/4] w-full">
@@ -161,7 +161,7 @@ export default function AboutPage() {
                   <div className="mt-8">
                     <Link
                       href="/leadership/"
-                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+                      className="neo-btn-primary px-5 py-2.5 text-sm"
                     >
                       Meet our leadership
                       <ArrowRight className="h-4 w-4" />
@@ -175,7 +175,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision — floating imagery */}
-      <section className="overflow-hidden bg-white py-16 md:py-24 border-b border-border">
+      <section className="overflow-hidden bg-paper py-16 md:py-24">
         <Container>
           <div className="grid gap-16">
             <div id="mission" className="scroll-mt-28 grid items-center gap-10 lg:grid-cols-2">
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 <img
                   src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop&q=80"
                   alt="Engineering and construction mission"
-                  className="animate-float-soft relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-white"
+                  className="animate-float-soft relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-paper"
                   loading="lazy"
                 />
               </div>
@@ -232,7 +232,7 @@ export default function AboutPage() {
                 <img
                   src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop&q=80"
                   alt="Renewable energy and sustainable vision"
-                  className="animate-float-soft-alt relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-white"
+                  className="animate-float-soft-alt relative z-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-2xl ring-4 ring-paper"
                   loading="lazy"
                 />
               </div>
@@ -242,7 +242,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section id="values" className="scroll-mt-28 py-16 md:py-24">
+      <section id="values" className="scroll-mt-28 bg-paper py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider mb-3">
@@ -267,7 +267,7 @@ export default function AboutPage() {
             {values.map((value, i) => (
               <div
                 key={value.title}
-                className="group rounded-xl border border-border bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md"
+                className="paper-card group rounded-xl p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
               >
                 <div className="mb-4 flex items-center justify-between">
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
@@ -285,21 +285,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Slogan Banner */}
-      <section className="bg-primary text-white py-16">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-accent">
-              Our Corporate Slogan
-            </p>
-            <ScrollReveal variant="blur-in" delay={200}>
-              <blockquote className="text-2xl md:text-3xl font-bold leading-snug">
-                &ldquo;Innovating the Future of Construction & Facilities Management&rdquo;
-              </blockquote>
-            </ScrollReveal>
-          </div>
-        </Container>
-      </section>
     </>
   );
 }

@@ -29,23 +29,10 @@ export default function ContactPage() {
       />
 
       <Section className="relative overflow-hidden bg-surface">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl"
-        />
-
         <Container className="relative">
           <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
-            {/* Form panel */}
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-[0_18px_50px_-28px_rgba(21,101,168,0.35)] sm:p-8 md:p-10">
-              <div
-                aria-hidden
-                className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent"
-              />
+            {/* Form panel — same paper fill as buttons so soft shadows read correctly */}
+            <div className="paper-card relative overflow-hidden rounded-2xl p-6 sm:p-8 md:p-10">
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
                 Project inquiry
               </p>
@@ -59,7 +46,7 @@ export default function ContactPage() {
               <form
                 action="https://api.web3forms.com/submit"
                 method="POST"
-                className="grid gap-5 sm:grid-cols-2"
+                className="grid gap-x-3 gap-y-4 sm:grid-cols-2"
               >
                 <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
                 <input type="hidden" name="subject" value="New inquiry from RASS Associates website" />
@@ -99,36 +86,34 @@ export default function ContactPage() {
                   </label>
                 </div>
 
-                <div className="sm:col-span-2 pt-3">
-                  <div className="neo-surface inline-flex rounded-2xl p-3">
-                    <button
-                      type="submit"
-                      className="neo-btn inline-flex min-w-[11rem] flex-row items-center justify-center gap-1.5 px-8 py-5 text-sm font-semibold tracking-wide"
-                    >
-                      <Send className="h-4 w-4" strokeWidth={2} />
-                      <span className="leading-tight">Submit Now</span>
-                    </button>
-                  </div>
+                <div className="sm:col-span-2 flex justify-end pt-2">
+                  <button
+                    type="submit"
+                    className="neo-btn min-w-[11rem] flex-row gap-2 px-8 py-3.5 text-[13px]"
+                  >
+                    <Send className="h-4 w-4" strokeWidth={2} />
+                    <span className="leading-none">Submit Now</span>
+                  </button>
                 </div>
               </form>
             </div>
 
             {/* Reach us — single cohesive panel, not stacked neo cards */}
             <aside className="space-y-6">
-              <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[0_18px_50px_-28px_rgba(13,148,136,0.3)]">
-                <div className="bg-gradient-to-br from-primary via-primary-dark to-accent px-6 py-7 text-white sm:px-7">
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+              <div className="paper-card overflow-hidden rounded-2xl">
+                <div className="border-b border-black/5 px-6 py-7 sm:px-7">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent">
                     Reach us
                   </p>
-                  <h3 className="font-heading text-2xl font-semibold">Corporate channels</h3>
-                  <p className="mt-2 text-sm text-white/75">
+                  <h3 className="font-heading text-2xl font-semibold text-primary">Corporate channels</h3>
+                  <p className="mt-2 text-sm text-text-muted">
                     Prefer a direct line? Use the details below — we are available during business hours.
                   </p>
                 </div>
 
-                <ul className="divide-y divide-border">
+                <ul className="divide-y divide-black/5">
                   <li className="flex gap-3.5 px-6 py-5 sm:px-7">
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface text-primary ring-1 ring-border">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-paper text-primary shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                       <MapPin className="h-3.5 w-3.5" />
                     </span>
                     <div>
@@ -140,7 +125,7 @@ export default function ContactPage() {
                   </li>
 
                   <li className="flex gap-3.5 px-6 py-5 sm:px-7">
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface text-primary ring-1 ring-border">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-paper text-primary shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                       <Phone className="h-3.5 w-3.5" />
                     </span>
                     <div>
@@ -160,7 +145,7 @@ export default function ContactPage() {
                   </li>
 
                   <li className="flex gap-3.5 px-6 py-5 sm:px-7">
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface text-primary ring-1 ring-border">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-paper text-primary shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                       <Mail className="h-3.5 w-3.5" />
                     </span>
                     <div>
@@ -175,7 +160,7 @@ export default function ContactPage() {
                   </li>
 
                   <li className="flex gap-3.5 px-6 py-5 sm:px-7">
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface text-primary ring-1 ring-border">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-paper text-primary shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                       <Clock3 className="h-3.5 w-3.5" />
                     </span>
                     <div>
@@ -190,8 +175,8 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[0_18px_50px_-28px_rgba(21,101,168,0.28)]">
-                <div className="border-b border-border px-5 py-3">
+              <div className="paper-card overflow-hidden rounded-2xl">
+                <div className="border-b border-black/5 px-5 py-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                     Office map
                   </p>

@@ -132,7 +132,7 @@ export function HeroSlider() {
           </p>
           <Link
             href={slides[current].buttonHref}
-            className="inline-flex rounded-full bg-white px-7 py-2.5 text-sm font-semibold tracking-wide text-primary shadow-lg transition-all hover:bg-accent hover:text-white"
+            className="inline-flex rounded-md border border-white bg-transparent px-8 py-2.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-white hover:text-primary"
           >
             {t("More Details")}
           </Link>

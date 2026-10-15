@@ -98,7 +98,7 @@ export default function EquipmentPage() {
       </Section>
 
       {/* Dredging & Marine Fleet Spotlight */}
-      <Section className="py-16 md:py-24 bg-surface border-b border-border">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
@@ -132,7 +132,7 @@ export default function EquipmentPage() {
               return (
                 <div
                   key={vessel.name}
-                  className="rounded-2xl border border-border bg-white shadow-sm transition-all hover:shadow-md hover:border-accent/40 flex flex-col justify-between overflow-hidden"
+                  className="paper-card flex flex-col justify-between overflow-hidden rounded-2xl transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img
@@ -145,10 +145,10 @@ export default function EquipmentPage() {
                   </div>
                   <div className="p-7 flex flex-col flex-1">
                     <div className="mb-4 flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-paper text-primary shadow-[6px_6px_12px_#c5cedd,-6px_-6px_12px_#fff]">
                         <Ship className="h-6 w-6 text-primary" />
                       </div>
-                      <span className="rounded-full bg-surface px-3 py-1 text-xs font-bold text-accent">
+                      <span className="rounded-full bg-paper px-3 py-1 text-xs font-bold text-accent shadow-[inset_3px_3px_6px_#c5cedd,inset_-3px_-3px_6px_#fff]">
                         {vessel.category}
                       </span>
                     </div>
@@ -170,7 +170,7 @@ export default function EquipmentPage() {
       </Section>
 
       {/* Equipment Inventory & Table */}
-      <Section className="py-16 md:py-24">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
@@ -199,21 +199,21 @@ export default function EquipmentPage() {
                 placeholder="Search equipment..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-border bg-surface pl-9 pr-4 py-2.5 text-sm focus:border-accent focus:bg-white focus:outline-none transition-colors"
+                className="w-full rounded-xl border-0 bg-paper pl-9 pr-4 py-2.5 text-sm text-text outline-none shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff] transition-shadow focus:shadow-[inset_5px_5px_10px_#c5cedd,inset_-5px_-5px_10px_#fff]"
               />
             </div>
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap gap-2 mb-8 pb-2 border-b border-border">
+          <div className="mb-8 flex flex-wrap gap-2 pb-2 border-b border-black/5">
             <button
               type="button"
               onClick={() => setSelectedCategory("all")}
               className={cn(
-                "rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all",
+                "cursor-filter rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all",
                 selectedCategory === "all"
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-surface text-text hover:bg-surface-dark",
+                  ? "bg-paper text-primary shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                  : "paper-card text-text-muted hover:text-primary",
               )}
             >
               All Categories ({equipment.length})
@@ -226,10 +226,10 @@ export default function EquipmentPage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat.id)}
                   className={cn(
-                    "rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all",
+                    "cursor-filter rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all",
                     selectedCategory === cat.id
-                      ? "bg-primary text-white shadow-sm"
-                      : "bg-surface text-text hover:bg-surface-dark",
+                      ? "bg-paper text-primary shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                      : "paper-card text-text-muted hover:text-primary",
                   )}
                 >
                   {cat.label} ({count})
@@ -239,10 +239,10 @@ export default function EquipmentPage() {
           </div>
 
           {/* Table */}
-          <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <div className="paper-card overflow-hidden rounded-2xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="bg-primary text-white">
+                <thead className="border-b border-black/5 bg-paper text-primary shadow-[inset_0_-2px_6px_#c5cedd33]">
                   <tr>
                     <th className="px-6 py-4 font-bold text-xs sm:text-sm uppercase tracking-wider">
                       Equipment Name
@@ -258,14 +258,14 @@ export default function EquipmentPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border">
+                <tbody className="divide-y divide-black/5">
                   {filteredEquipment.length > 0 ? (
                     filteredEquipment.map((item, i) => (
                       <tr
                         key={item.name}
                         className={cn(
-                          "transition-colors hover:bg-surface/80",
-                          i % 2 === 0 ? "bg-white" : "bg-surface/30",
+                          "transition-colors hover:bg-paper/80",
+                          i % 2 === 1 && "bg-paper/40",
                         )}
                       >
                         <td className="px-6 py-4 font-semibold text-primary">
@@ -295,7 +295,7 @@ export default function EquipmentPage() {
           </div>
 
           {/* Maintenance & Yard Facility note */}
-          <div className="mt-12 rounded-2xl bg-surface border border-border p-8 grid gap-6 md:grid-cols-3 items-center">
+          <div className="paper-card mt-12 grid gap-6 rounded-2xl p-8 md:grid-cols-3 items-center">
             <div className="md:col-span-2">
               <h4 className="text-xl font-bold text-primary mb-2 flex items-center gap-2">
                 <Wrench className="h-5 w-5 text-accent" />
@@ -310,7 +310,7 @@ export default function EquipmentPage() {
             <div className="text-right md:text-right">
               <Link
                 href="/contact/"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors w-full sm:w-auto"
+                className="neo-btn-primary w-full px-6 py-3 text-sm sm:w-auto"
               >
                 Inquire for Fleet Mobilization
                 <ArrowRight className="h-4 w-4" />

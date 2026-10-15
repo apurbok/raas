@@ -30,10 +30,9 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}/`}
-      className="card-trace project-focus-shadow group relative overflow-hidden rounded-2xl bg-white"
+      className="card-trace project-focus-shadow paper-card group relative overflow-hidden rounded-2xl"
     >
       <CardTraceBorder />
-      <span className="absolute -right-6 -top-6 z-10 h-24 w-24 rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-150" />
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
           src={image}

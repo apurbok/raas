@@ -7,11 +7,12 @@
   --color-accent: #0d9488;
   --color-accent-hover: #0f766e;
   --color-secondary: #0891b2;
-  --color-surface: #f0f7fc;
-  --color-surface-dark: #e0eef8;
+  --color-paper: #e8eef5;
+  --color-surface: #e8eef5;
+  --color-surface-dark: #dde5ef;
   --color-text: #1e293b;
   --color-text-muted: #64748b;
-  --color-border: #d0e3f0;
+  --color-border: #cfd8e6;
   --font-heading: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-josefin), ui-sans-serif, system-ui, sans-serif;
 }
@@ -78,7 +79,8 @@ html[data-header-font="goldman"] {
   }
 
   body {
-    @apply bg-white text-text antialiased;
+    @apply text-text antialiased;
+    background: var(--color-paper);
     font-family: var(--font-body);
   }
 
@@ -336,51 +338,66 @@ html[data-header-font="goldman"] {
       0 8px 16px rgb(15 23 42 / 0.08);
   }
 
-  .neo-card {
-    background: #f4f7fb;
+  /* Paper surfaces — content sits on soft extruded paper */
+  .neo-surface,
+  .paper {
+    background: var(--color-paper);
+  }
+
+  .neo-card,
+  .paper-card {
+    background: var(--color-paper);
     border-radius: 1rem;
-    box-shadow:
-      8px 8px 18px rgb(148 163 184 / 0.28),
-      -8px -8px 18px rgb(255 255 255 / 0.95);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-
-  .neo-card-raised {
-    background: #f4f7fb;
-    box-shadow:
-      10px 10px 24px rgb(148 163 184 / 0.35),
-      -10px -10px 24px rgb(255 255 255 / 1),
-      inset 0 0 0 1px rgb(255 255 255 / 0.6);
-  }
-
-  .neo-surface {
-    background: #e8eef5;
-  }
-
-  .neo-btn {
-    background: #e8eef5;
-    color: #1e3a5f;
     border: none;
-    border-radius: 0.75rem;
     box-shadow:
-      8px 8px 16px rgb(163 177 198 / 0.55),
-      -8px -8px 16px rgb(255 255 255 / 0.95);
-    transition: box-shadow 0.22s ease, color 0.22s ease;
+      9px 9px 18px #c5cedd,
+      -9px -9px 18px #ffffff;
+    transition: box-shadow 0.25s ease;
   }
 
-  .neo-btn:hover {
+  .neo-card-raised,
+  .paper-card-raised {
+    background: var(--color-paper);
     box-shadow:
-      10px 10px 18px rgb(163 177 198 / 0.6),
-      -10px -10px 18px rgb(255 255 255 / 1);
+      12px 12px 24px #c5cedd,
+      -12px -12px 24px #ffffff;
   }
 
+  /*
+   * Soft-UI / paper button (Apar’s Classroom style):
+   * same fill as the paper surface; raised at rest; pressed into paper on focus/active.
+   */
+  .neo-btn,
+  .neo-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--color-paper);
+    color: #2b3a55;
+    border: none;
+    border-radius: 0.35rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow:
+      8px 8px 16px #c5cedd,
+      -8px -8px 16px #ffffff;
+    transition: box-shadow 0.2s ease, color 0.2s ease;
+  }
+
+  .neo-btn:hover,
   .neo-btn:focus,
   .neo-btn:focus-visible,
-  .neo-btn:active {
+  .neo-btn:active,
+  .neo-btn-primary:hover,
+  .neo-btn-primary:focus,
+  .neo-btn-primary:focus-visible,
+  .neo-btn-primary:active {
     outline: none;
+    color: #1565a8;
     box-shadow:
-      inset 6px 6px 12px rgb(163 177 198 / 0.55),
-      inset -6px -6px 12px rgb(255 255 255 / 0.9);
+      inset 6px 6px 12px #c5cedd,
+      inset -6px -6px 12px #ffffff;
   }
 
   .flip-card {

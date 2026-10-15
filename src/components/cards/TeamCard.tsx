@@ -24,7 +24,7 @@ export function TeamCard({ leader }: { leader: Leader }) {
   const avatarImage = avatarImages[leader.slug];
 
   return (
-    <article className="group rounded-xl border border-border bg-white shadow-sm transition-all hover:shadow-md hover:border-accent/30 hover:-translate-y-1 overflow-hidden">
+    <article className="paper-card group overflow-hidden rounded-xl transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary to-primary-dark">
         {avatarImage ? (
           <>

@@ -23,7 +23,7 @@ export function ServiceCard({ service, featured = false }: { service: Service; f
   return (
     <Link
       href={href}
-      className={`card-trace group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ${
+      className={`card-trace paper-card group relative flex flex-col overflow-hidden rounded-2xl ${
         featured ? "lg:col-span-3 lg:flex-row" : ""
       }`}
     >

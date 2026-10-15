@@ -2,6 +2,6 @@
   <rect width="48" height="48" rx="12" fill="#1565A8"/>
   <rect x="4" y="4" width="40" height="40" rx="9" fill="#0D9488" opacity="0.35"/>
   <text x="24" y="31" text-anchor="middle" font-family="Outfit, Inter, system-ui, sans-serif" font-weight="700" font-size="18" fill="#FFFFFF">RA</text>
-  <text x="60" y="22" font-family="Outfit, Inter, system-ui, sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">RASS</text>
-  <text x="60" y="38" font-family="Outfit, Inter, system-ui, sans-serif" font-weight="500" font-size="12" fill="#5EEAD4">Associates</text>
+  <text x="60" y="22" font-family="Outfit, Inter, system-ui, sans-serif" font-weight="700" font-size="16" fill="#1565A8">RASS</text>
+  <text x="60" y="38" font-family="Outfit, Inter, system-ui, sans-serif" font-weight="500" font-size="12" fill="#0D9488">Associates</text>
 </svg>

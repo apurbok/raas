@@ -31,7 +31,7 @@ export default function SisterConcernsPage() {
       />
 
       {/* Affiliated Companies Section */}
-      <Section id="affiliated" className="py-16 md:py-24 bg-surface border-b border-border">
+      <Section id="affiliated" className="bg-paper py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
@@ -52,7 +52,7 @@ export default function SisterConcernsPage() {
               return (
                 <article
                   key={company.slug}
-                  className="rounded-3xl border border-border bg-white shadow-sm transition-all hover:shadow-lg hover:border-accent/40 overflow-hidden"
+                  className="paper-card overflow-hidden rounded-3xl transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
                 >
                   <div className="relative aspect-[16/5]">
                     <img
@@ -86,7 +86,7 @@ export default function SisterConcernsPage() {
                       href={company.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-primary-dark transition-colors"
+                      className="neo-btn-primary shrink-0 px-5 py-2.5 text-xs sm:text-sm"
                     >
                       Visit Website
                       <ExternalLink className="h-4 w-4" />
@@ -97,7 +97,7 @@ export default function SisterConcernsPage() {
                     {company.description}
                   </p>
 
-                  <div className="mb-6 rounded-2xl bg-surface/70 p-6 border border-border/60">
+                  <div className="mb-6 rounded-2xl bg-paper p-6 shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]">
                     <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">
                       Key Capabilities
                     </h3>
@@ -119,7 +119,7 @@ export default function SisterConcernsPage() {
       </Section>
 
       {/* Sister Concerns Section */}
-      <Section className="py-16 md:py-24">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
@@ -147,7 +147,7 @@ export default function SisterConcernsPage() {
                 <article
                   id={concern.slug}
                   key={concern.slug}
-                  className="scroll-mt-28 rounded-3xl border border-border bg-white shadow-sm transition-all hover:shadow-lg hover:border-accent/40 overflow-hidden"
+                  className="paper-card scroll-mt-28 overflow-hidden rounded-3xl transition-all hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
                 >
                   <div className="relative aspect-[16/5]">
                     <img
@@ -182,7 +182,7 @@ export default function SisterConcernsPage() {
                         href={concern.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-primary-dark transition-colors"
+                        className="neo-btn-primary shrink-0 px-5 py-2.5 text-xs sm:text-sm"
                       >
                         Visit Website
                         <ExternalLink className="h-4 w-4" />
@@ -195,7 +195,7 @@ export default function SisterConcernsPage() {
                   </p>
 
                   {concern.highlights && concern.highlights.length > 0 && (
-                    <div className="mb-6 rounded-2xl bg-surface/70 p-6 border border-border/60">
+                    <div className="mb-6 rounded-2xl bg-paper p-6 shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]">
                       <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">
                         Key Features & Capabilities
                       </h3>
@@ -210,7 +210,7 @@ export default function SisterConcernsPage() {
                     </div>
                   )}
 
-                  <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-border text-xs sm:text-sm text-text-muted">
+                  <div className="flex flex-wrap items-center gap-6 border-t border-border/50 pt-6 text-xs sm:text-sm text-text-muted">
                     {concern.address && (
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-accent shrink-0" />

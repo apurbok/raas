@@ -20,9 +20,9 @@ export default function LeadershipPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Leadership" }]}
       />
 
-      <Section>
+      <Section className="bg-paper">
         <Container>
-          <div className="mb-16 rounded-2xl border border-border bg-surface p-8 md:p-12">
+          <div className="paper-card mb-16 rounded-2xl p-8 md:p-12">
             <div className="grid gap-8 lg:grid-cols-12 items-start">
               <div className="lg:col-span-4">
                 <div className="relative overflow-hidden rounded-2xl shadow-md">

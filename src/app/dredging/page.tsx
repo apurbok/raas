@@ -25,10 +25,10 @@ export default function DredgingPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Dredging" }]}
       />
 
-      <Section>
+      <Section className="bg-paper">
         <Container>
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <div className="relative mb-8 overflow-hidden rounded-2xl border border-border shadow-lg">
+            <div className="paper-card relative mb-8 overflow-hidden rounded-2xl">
               <div className="relative aspect-[16/9]">
                 <img
                   src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&h=675&fit=crop&q=80"
@@ -55,7 +55,7 @@ export default function DredgingPage() {
           />
           <StaggerContainer className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerMs={80}>
             {dredgingServices.map((service) => (
-              <div key={service} className="flex items-start gap-3 rounded-lg border border-border p-4">
+              <div key={service} className="paper-card flex items-start gap-3 rounded-lg p-4">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />
                 <span className="text-sm font-medium text-text">{service}</span>
               </div>
@@ -80,7 +80,7 @@ export default function DredgingPage() {
               ];
               const fleetImage = fleetImages[i % fleetImages.length];
               return (
-                <div key={item.name} className="rounded-xl border border-border p-6 overflow-hidden">
+                <div key={item.name} className="paper-card overflow-hidden rounded-xl p-6">
                   <div className="relative aspect-[16/9] mb-5 overflow-hidden rounded-lg">
                     <img
                       src={fleetImage}
@@ -105,7 +105,7 @@ export default function DredgingPage() {
         </Container>
       </Section>
 
-      <Section className="bg-surface">
+      <Section className="bg-paper">
         <Container>
           <h2 className="mb-8 text-2xl font-bold text-primary">Related Projects</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

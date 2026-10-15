@@ -101,10 +101,10 @@ export function WhyChooseUs() {
         return (
           <div
             key={item.title}
-            className={`overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
+            className={`paper-card overflow-hidden rounded-2xl transition-all duration-300 ${
               isOpen
-                ? "border-primary/30 shadow-[0_12px_30px_rgba(21,101,168,0.12)]"
-                : "border-border hover:border-accent/40"
+                ? "shadow-[inset_6px_6px_12px_#c5cedd,inset_-6px_-6px_12px_#fff]"
+                : ""
             }`}
           >
             <button
@@ -115,10 +115,10 @@ export function WhyChooseUs() {
             >
               <span className="flex items-center gap-3">
                 <span
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors ${
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-primary transition-shadow ${
                     isOpen
-                      ? "bg-gradient-to-br from-primary to-accent text-white"
-                      : "bg-primary/10 text-primary"
+                      ? "shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                      : "shadow-[5px_5px_10px_#c5cedd,-5px_-5px_10px_#fff]"
                   }`}
                 >
                   <Icon className="h-5 w-5" />

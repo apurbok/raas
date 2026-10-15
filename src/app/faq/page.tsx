@@ -44,7 +44,7 @@ export default function FaqPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
       />
 
-      <Section className="bg-surface">
+      <Section className="bg-paper">
         <Container>
           <FaqAccordion items={faqs} />
         </Container>

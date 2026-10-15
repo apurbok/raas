@@ -35,7 +35,7 @@ export default function ProjectsPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
       />
 
-      <Section>
+      <Section className="bg-paper">
         <Container>
           <div className="mb-8 flex flex-wrap gap-2">
             {filters.map((filter) => (
@@ -47,8 +47,8 @@ export default function ProjectsPage() {
                 className={cn(
                   "cursor-filter rounded-full px-4 py-2 text-sm font-medium transition-all",
                   activeFilter === filter.value
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-surface text-text-muted hover:bg-surface-dark",
+                    ? "bg-paper text-primary font-semibold shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                    : "paper-card text-text-muted hover:text-primary",
                 )}
               >
                 {filter.label}

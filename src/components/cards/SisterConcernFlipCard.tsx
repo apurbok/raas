@@ -36,7 +36,7 @@ export function SisterConcernFlipCard({ concern }: { concern: SisterConcern }) {
           <p className="mt-6 text-[11px] font-medium text-white/70">Hover to explore</p>
         </div>
 
-        <div className="flip-card-back flip-card-face flex flex-col rounded-2xl border border-border bg-white p-6 shadow-lg">
+        <div className="flip-card-back flip-card-face paper-card flex flex-col rounded-2xl p-6">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             {concern.category}
           </p>
@@ -46,7 +46,7 @@ export function SisterConcernFlipCard({ concern }: { concern: SisterConcern }) {
           </p>
           <Link
             href={`/sister-concerns/#${concern.slug}`}
-            className="text-sm font-semibold text-primary hover:text-accent"
+            className="neo-btn self-start px-4 py-2 text-xs"
           >
             Learn more →
           </Link>

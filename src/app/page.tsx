@@ -40,21 +40,18 @@ export default function HomePage() {
     <>
       <HeroSlider />
 
-      <Section className="bg-white">
+      <Section className="bg-paper">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="paper-card mx-auto max-w-3xl rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent">Welcome</p>
             <h2 className="mb-6 font-heading text-3xl font-semibold text-primary md:text-4xl">
               {company.name}
             </h2>
-            <p className="mb-4 text-base leading-relaxed text-text-muted md:text-lg">
+            <p className="mb-8 text-base leading-relaxed text-text-muted md:text-lg">
               A Bangladesh construction company known for power-plant campuses, marine civil works, and
               heavy infrastructure — now expanding into oil &amp; gas and international energy partnerships.
             </p>
-            <Link
-              href="/about/"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark"
-            >
+            <Link href="/about/" className="neo-btn px-7 py-3 text-sm">
               Discover Our Story
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -62,7 +59,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-surface">
+      <Section className="bg-paper">
         <Container>
           <SectionHeading
             eyebrow="What We Do"
@@ -76,12 +73,11 @@ export default function HomePage() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="card-trace group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm"
+                  className="card-trace paper-card group relative overflow-hidden rounded-2xl p-6"
                 >
                   <CardTraceBorder />
-                  <span className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-accent/10 transition-transform duration-500 group-hover:scale-150" />
-                  <div className="relative mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-md transition group-hover:scale-110">
-                    <Icon className="h-6 w-6" />
+                  <div className="relative mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-paper text-primary shadow-[6px_6px_12px_#c5cedd,-6px_-6px_12px_#fff] transition group-hover:shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]">
+                    <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="relative mb-2 text-lg font-semibold text-primary">{item.title}</h3>
                   <p className="relative text-sm leading-relaxed text-text-muted">{item.description}</p>
@@ -92,7 +88,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-paper">
         <Container>
           <div className="mb-12 text-center">
             <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-accent">Why Choose Us</p>
@@ -108,7 +104,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-surface">
+      <Section className="bg-paper">
         <Container>
           <SectionHeading
             eyebrow="RASS Group"
@@ -121,8 +117,9 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/sister-concerns/" className="text-sm font-semibold text-primary hover:text-accent">
-              View all sister concerns →
+            <Link href="/sister-concerns/" className="neo-btn px-6 py-2.5 text-sm">
+              View all sister concerns
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </Container>

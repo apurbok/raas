@@ -33,11 +33,11 @@ export default function OilGasPage() {
       />
 
       {/* Global Positioning Banner */}
-      <Section className="bg-primary-dark text-white">
+      <Section className="bg-paper">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 items-center">
             <div className="lg:col-span-7">
-              <div className="relative mb-8 overflow-hidden rounded-2xl border border-white/20 shadow-lg">
+              <div className="paper-card relative mb-8 overflow-hidden rounded-2xl">
                 <div className="relative aspect-[16/9]">
                   <img
                     src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&h=675&fit=crop&q=80"
@@ -51,23 +51,23 @@ export default function OilGasPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-accent">
                 International Energy & Engineering Platform
               </span>
-              <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white font-heading leading-tight">
+              <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-primary font-heading leading-tight">
                 Global Reach. Local Mastery. International Energy & Industrial Solutions.
               </h2>
-              <p className="mt-6 text-base sm:text-lg text-white/80 leading-relaxed">
+              <p className="mt-6 text-base sm:text-lg text-text-muted leading-relaxed">
                 {oilGas.overview}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/contact/"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
+                  className="neo-btn-primary px-6 py-3 text-sm"
                 >
                   Discuss Your Project
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/sister-concerns/"
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-colors"
+                  className="neo-btn px-6 py-3 text-sm"
                 >
                   <Globe2 className="h-4 w-4" />
                   Explore Affiliated Companies
@@ -77,7 +77,7 @@ export default function OilGasPage() {
 
             {/* International Markets */}
             <div className="lg:col-span-5">
-              <div className="relative mb-6 overflow-hidden rounded-2xl border border-white/20 shadow-lg">
+              <div className="paper-card relative mb-6 overflow-hidden rounded-2xl">
                 <div className="relative aspect-[16/10]">
                   <img
                     src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=500&fit=crop&q=80"
@@ -88,15 +88,18 @@ export default function OilGasPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
               </div>
-              <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="paper-card rounded-2xl p-6">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-5">
                   International Market Presence
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {oilGas.internationalMarkets.map((market) => (
-                    <div key={market.region} className="rounded-xl border border-white/10 bg-white/5 p-4">
-                      <div className="font-bold text-white text-sm">{market.region}</div>
-                      <div className="text-xs text-white/70 mt-1">{market.focus}</div>
+                    <div
+                      key={market.region}
+                      className="rounded-xl bg-paper p-4 shadow-[inset_4px_4px_8px_#c5cedd,inset_-4px_-4px_8px_#fff]"
+                    >
+                      <div className="font-bold text-primary text-sm">{market.region}</div>
+                      <div className="text-xs text-text-muted mt-1">{market.focus}</div>
                     </div>
                   ))}
                 </div>
@@ -107,9 +110,9 @@ export default function OilGasPage() {
       </Section>
 
       {/* Market Positioning */}
-      <Section className="bg-surface py-16 md:py-20 border-y border-border">
+      <Section className="bg-paper py-16 md:py-20">
         <Container>
-          <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-white p-8 md:p-12 shadow-sm">
+          <div className="paper-card mx-auto max-w-4xl rounded-2xl p-8 md:p-12">
             <div className="flex items-start gap-4 mb-6">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 <Wrench className="h-6 w-6" />
@@ -128,7 +131,7 @@ export default function OilGasPage() {
       </Section>
 
       {/* Core Capabilities */}
-      <Section className="py-16 md:py-24">
+      <Section className="bg-paper py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-accent mb-3 inline-block">
@@ -153,7 +156,7 @@ export default function OilGasPage() {
               return (
                 <div
                   key={capability.title}
-                  className="rounded-2xl border border-border bg-white shadow-sm transition-all hover:shadow-md hover:border-accent/40 hover:-translate-y-1 flex flex-col overflow-hidden"
+                  className="paper-card flex flex-col overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-[12px_12px_24px_#c5cedd,-12px_-12px_24px_#fff]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img
@@ -165,7 +168,7 @@ export default function OilGasPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                   <div className="p-7 flex flex-col flex-1">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-paper text-primary shadow-[6px_6px_12px_#c5cedd,-6px_-6px_12px_#fff]">
                       <Icon className="h-6 w-6" />
                     </div>
                   <h3 className="text-lg font-bold text-primary mb-3">{capability.title}</h3>
@@ -187,29 +190,29 @@ export default function OilGasPage() {
       </Section>
 
       {/* Strategic Partnerships */}
-      <Section className="bg-primary-dark py-16 md:py-20 text-white">
+      <Section className="bg-paper py-16 md:py-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
               Strategic Affiliations
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-white font-heading">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-primary font-heading">
               Building Global Partnerships
             </h2>
-            <p className="mt-4 text-base text-white/80 leading-relaxed">
+            <p className="mt-4 text-base text-text-muted leading-relaxed">
               We build strategic affiliations with international technology providers, manufacturers,
               and EPC contractors to deliver world-class solutions across global markets.
             </p>
           </div>
           <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
             {oilGas.strategicPartners.map((partner, i) => (
-              <div key={partner} className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 p-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/20 text-accent">
+              <div key={partner} className="paper-card flex items-center gap-3 rounded-xl p-5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-paper text-accent shadow-[4px_4px_8px_#c5cedd,-4px_-4px_8px_#fff]">
                   <Handshake className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white">0{i + 1}</div>
-                  <div className="text-sm font-semibold text-white/90">{partner}</div>
+                  <div className="text-sm font-bold text-accent">0{i + 1}</div>
+                  <div className="text-sm font-semibold text-primary">{partner}</div>
                 </div>
               </div>
             ))}
@@ -218,9 +221,9 @@ export default function OilGasPage() {
       </Section>
 
       {/* CTA */}
-      <Section>
+      <Section className="bg-paper">
         <Container>
-          <div className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-surface border border-border p-8 md:p-12 text-center md:text-left md:flex-row">
+          <div className="paper-card flex flex-col items-center justify-between gap-6 rounded-2xl p-8 md:p-12 text-center md:text-left md:flex-row">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-2">
                 Partner with Our International Energy Platform
@@ -233,7 +236,7 @@ export default function OilGasPage() {
             </div>
             <Link
               href="/contact/"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
+              className="neo-btn-primary shrink-0 px-8 py-4 text-sm"
             >
               Contact Our Energy Division
               <ArrowRight className="h-5 w-5" />
